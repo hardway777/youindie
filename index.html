@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Next-Gen Gamedev Dashboard</title>
+	
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+	<link rel="manifest" href="site.webmanifest">
+	
+    <title>Youindie.ru</title>
     
     <!-- Подключаем Tailwind CSS с поддержкой переключения тем -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -45,6 +51,9 @@
 
 		body.is-guest .guest-ui { display: flex !important; }
 		body.is-guest .user-ui { display: none !important; }
+		
+		.no-scrollbar::-webkit-scrollbar { display: none; }
+		.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="bg-slate-50 dark:bg-darkBase text-slate-800 dark:text-slate-200 min-h-screen pb-16 overflow-x-hidden relative font-sans">
@@ -53,19 +62,28 @@
     <div class="hidden dark:block absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-pinkAccent/5 blur-[120px] pointer-events-none"></div>
     <div class="hidden dark:block absolute top-[20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-cyanAccent/5 blur-[150px] pointer-events-none"></div>
 
-<!-- ШАПКА САЙТА -->
-<header class="sticky top-0 z-50 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-darkBase/80 backdrop-blur-md">
-    <div class="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
+	<!-- ШАПКА САЙТА -->
+	<header class="sticky top-0 z-50 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-darkBase/80 backdrop-blur-md">
+    <div class="max-w-[1400px] mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
         
         <!-- Логотип -->
-        <div class="flex items-center space-x-3">
-            <span class="text-3xl font-techno italic font-bold tracking-widest text-slate-900 dark:text-white">
-                You<span class="text-cyan-600 dark:text-cyanAccent">Indie</span>
-            </span>
-        </div>
+        <a href="/" class="flex items-center gap-2 md:gap-4 group shrink-0">
+            <img src="Logo.png" alt="YouIndie Logo" class="w-10 h-10 md:w-12 md:h-12 object-contain group-hover:scale-105 transition-transform duration-300">
+            <div class="flex flex-col justify-center mt-1">
+                <div class="flex items-baseline leading-none">
+                    <span class="text-2xl md:text-4xl font-techno font-black italic tracking-[-0.06em] text-slate-900 dark:text-white">
+                        You<span class="text-cyan-500 dark:text-cyanAccent drop-shadow-[0_0_8px_rgba(0,240,255,0.4)]">Indie</span>
+                    </span>
+                    <span class="text-lg md:text-2xl font-sans font-bold italic text-cyan-500 dark:text-cyanAccent ml-0.5">.ru</span>
+                </div>
+                <span class="text-[5px] md:text-[7px] font-sans font-medium text-slate-500 dark:text-slate-300 uppercase tracking-widest -mt-1 md:-mt-1.5 leading-none">
+                    Платформа инди-разработчиков
+                </span>
+            </div>
+        </a>
 
-        <!-- Навигация -->
-        <nav class="hidden xl:flex space-x-6 text-sm font-semibold text-slate-600 dark:text-slate-400">
+        <!-- Навигация (Теперь скрывается только на планшетах и мобилках, lg:flex вместо xl:flex) -->
+        <nav class="hidden lg:flex space-x-4 xl:space-x-6 text-sm font-semibold text-slate-600 dark:text-slate-400">
             <a href="#" class="hover:text-slate-900 dark:hover:text-white transition-colors">Новости</a>
             <a href="#" class="hover:text-slate-900 dark:hover:text-white transition-colors">Статьи</a>
             <a href="#" class="hover:text-slate-900 dark:hover:text-white transition-colors">Дневники</a>
@@ -76,50 +94,102 @@
         </nav>
 
         <!-- Правая панель (Профиль + Действия) -->
-        <div class="flex items-center space-x-5">
+        <div class="flex items-center space-x-3 md:space-x-5 shrink-0">
             
- 
+            <!-- БЛОК ГОСТЯ -->
+            <div class="guest-ui hidden items-center space-x-3">
+                <a href="#" class="text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">Войти</a>
+                <button class="bg-cyanAccent text-darkBase text-sm font-bold px-3 py-1.5 md:px-4 md:py-2 rounded-lg hover:bg-cyan-400 transition-colors">Регистрация</button>
+            </div>
 
-		<!-- БЛОК ГОСТЯ (Скрыт по умолчанию, появляется в режиме гостя) -->
-			<div class="guest-ui hidden items-center space-x-3">
-				<a href="#" class="text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">Войти</a>
-				<button class="bg-cyanAccent text-darkBase text-sm font-bold px-4 py-2 rounded-lg hover:bg-cyan-400 transition-colors">Регистрация</button>
-			</div>
+            <!-- БЛОК АВТОРИЗОВАННОГО -->
+            <div class="user-ui flex items-center space-x-2 md:space-x-5">
+                
+                <!-- Кнопка "Опубликовать" (Иконка на мобилках, текст на ПК) -->
+                <button class="flex items-center justify-center w-10 h-10 md:w-auto md:h-auto md:px-4 md:py-2 rounded-lg bg-slate-900 dark:bg-cyanAccent/10 text-white dark:text-cyanAccent border border-transparent dark:border-cyanAccent/30 hover:bg-slate-800 dark:hover:bg-cyanAccent/20 transition-all">
+                    <!-- Иконка плюса (видна только на мобилках) -->
+                    <svg class="w-5 h-5 block md:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                    <!-- Текст (виден начиная с планшетов) -->
+                    <span class="hidden md:block text-sm font-semibold">Опубликовать</span>
+                </button>
 
-			<!-- БЛОК АВТОРИЗОВАННОГО (Виден по умолчанию, скрывается в режиме гостя) -->
-			<div class="user-ui flex items-center space-x-5">
-				<button class="flex items-center space-x-2 text-sm font-semibold px-4 py-2 rounded-lg bg-slate-900 dark:bg-cyanAccent/10 text-white dark:text-cyanAccent border border-transparent dark:border-cyanAccent/30 hover:bg-slate-800 dark:hover:bg-cyanAccent/20 transition-all">
-					<span>+ Опубликовать</span>
-				</button>
-				<button class="relative p-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">
-					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
-					<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-pinkAccent rounded-full border-2 border-white dark:border-darkBase"></span>
-				</button>
-				<div class="flex items-center space-x-3 pl-2 border-l border-slate-200 dark:border-slate-800">
-					<div class="text-right hidden lg:block">
-						<div class="text-sm font-bold text-slate-900 dark:text-white leading-none">NeoDev</div>
-						<div class="text-[10px] text-slate-500 dark:text-slate-400 mt-1 uppercase font-bold tracking-wider">Техно-художник</div>
-					</div>
-					<div class="relative">
-						<div class="w-10 h-10 rounded-full bg-gradient-to-tr from-pinkAccent to-cyanAccent p-[2px]">
-							<div class="w-full h-full rounded-full bg-slate-200 dark:bg-darkBase"></div>
-						</div>
-						<span class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white dark:border-darkBase rounded-full"></span>
-					</div>
-				</div>
-			</div>
+                <button class="relative p-2 hidden sm:block text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+                    <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-pinkAccent rounded-full border-2 border-white dark:border-darkBase"></span>
+                </button>
+
+                <div class="flex items-center space-x-3 sm:pl-2 sm:border-l border-slate-200 dark:border-slate-800">
+                    <div class="text-right hidden lg:block">
+                        <div class="text-sm font-bold text-slate-900 dark:text-white leading-none">NeoDev</div>
+                        <div class="text-[10px] text-slate-500 dark:text-slate-400 mt-1 uppercase font-bold tracking-wider">Техно-художник</div>
+                    </div>
+                    <div class="relative">
+                        <div class="w-9 h-9 md:w-10 md:h-10 rounded-full bg-gradient-to-tr from-pinkAccent to-cyanAccent p-[2px]">
+                            <div class="w-full h-full rounded-full bg-slate-200 dark:bg-darkBase"></div>
+                        </div>
+                        <span class="absolute bottom-0 right-0 w-2.5 h-2.5 md:w-3 md:h-3 bg-green-500 border-2 border-white dark:border-darkBase rounded-full"></span>
+                    </div>
+                </div>
+            </div>
 
             <!-- Переключатель Темы -->
-            <button id="theme-toggle" class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+            <button id="theme-toggle" class="p-2 hidden sm:block rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
                 <svg id="icon-moon" class="w-5 h-5 text-cyanAccent hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
                 <svg id="icon-sun" class="w-5 h-5 text-orange-500 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
             </button>
-			
-			
+
+			<!-- КНОПКА БУРГЕР МЕНЮ -->
+			<button id="burger-btn" class="block lg:hidden p-2 text-slate-600 dark:text-slate-300 hover:text-cyan-500 dark:hover:text-cyanAccent hover:drop-shadow-[0_0_8px_rgba(0,240,255,0.5)] transition-all">
+				<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+				</svg>
+			</button>
+            
         </div>
-		
     </div>
 </header>
+
+<!-- МОБИЛЬНОЕ БОКОВОЕ МЕНЮ (Выезжает справа) -->
+<div id="mobile-menu" class="fixed inset-0 z-[100] pointer-events-none">
+    
+    <!-- Затемнение фона (Backdrop) -->
+    <div id="mobile-backdrop" class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm opacity-0 transition-opacity duration-300 cursor-pointer"></div>
+    
+    <!-- Сама панель меню -->
+    <div id="mobile-panel" class="absolute top-0 right-0 w-64 sm:w-80 h-full bg-white dark:bg-darkBase border-l border-slate-200 dark:border-slate-800 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col pointer-events-auto">
+        
+        <!-- Шапка меню (Логотип и крестик) -->
+        <div class="h-16 flex items-center justify-between px-6 border-b border-slate-200 dark:border-slate-800">
+            <span class="text-xl font-techno font-black italic tracking-[-0.06em] text-slate-900 dark:text-white">
+                You<span class="text-cyan-500 dark:text-cyanAccent">Indie</span>
+            </span>
+            <button id="close-menu-btn" class="p-2 text-slate-500 hover:text-pink-500 dark:hover:text-pinkAccent transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+
+        <!-- Ссылки -->
+        <nav class="flex-1 overflow-y-auto py-6 px-6 space-y-4 flex flex-col font-semibold text-slate-700 dark:text-slate-300">
+            <a href="#" class="block hover:text-cyan-500 dark:hover:text-cyanAccent transition-colors">Новости</a>
+            <a href="#" class="block hover:text-cyan-500 dark:hover:text-cyanAccent transition-colors">Статьи</a>
+            <a href="#" class="block hover:text-cyan-500 dark:hover:text-cyanAccent transition-colors">Дневники</a>
+            <a href="#" class="block hover:text-cyan-500 dark:hover:text-cyanAccent transition-colors">Витрина</a>
+            <a href="#" class="block hover:text-cyan-500 dark:hover:text-cyanAccent transition-colors">Ресурсы</a>
+            <a href="#" class="block hover:text-cyan-500 dark:hover:text-cyanAccent transition-colors">Форум</a>
+            <a href="#" class="block hover:text-cyan-500 dark:hover:text-cyanAccent transition-colors">Работа</a>
+        </nav>
+
+        <!-- Подвал меню (Например, переключатель темы для мобилок) -->
+        <div class="p-6 border-t border-slate-200 dark:border-slate-800">
+            <button id="mobile-theme-toggle" class="flex items-center space-x-3 w-full p-3 rounded-xl bg-slate-100 dark:bg-slate-800/50 text-slate-700 dark:text-slate-300 hover:text-cyan-500 dark:hover:text-cyanAccent transition-colors">
+                <svg class="w-5 h-5 text-cyanAccent hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                <svg class="w-5 h-5 text-orange-500 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+                <span>Сменить тему</span>
+            </button>
+        </div>
+
+    </div>
+</div>
 
     <!-- ОСНОВНАЯ СЕТКА (ДАШБОРД) -->
     <main class="max-w-[1400px] mx-auto px-6 mt-8 space-y-6">
@@ -130,7 +200,7 @@
             <!-- Главный фокус (Левая колонка) -->
             <section class="lg:col-span-2 bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-md dark:shadow-none transition-all relative group flex flex-col justify-end p-8 min-h-[420px]">
                 <!-- Имитация сочного арта на фоне -->
-                <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-10 dark:opacity-40"></div>
+                <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1658324362365-aa0b067fd804?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center opacity-60 dark:opacity-60"></div>
                 <div class="absolute inset-0 bg-gradient-to-t from-white via-white/80 dark:from-darkBase dark:via-darkBase/80 to-transparent z-10"></div>
                 
                 <div class="relative z-20">
@@ -364,13 +434,13 @@
             </section>
 
             <!-- ЛЕНТА НОВОСТЕЙ (Занимает 1 колонку) -->
-            <section>
-                <div class="flex justify-between items-end mb-4 px-1">
-                    <h2 class="font-techno font-bold text-2xl text-slate-900 dark:text-white">Лента индустрии</h2>
-                </div>
-                
-                <div class="bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm h-full max-h-[420px] overflow-y-auto no-scrollbar relative">
-                    
+<section class="flex flex-col h-full"> <!-- 1. Добавили flex flex-col h-full -->
+    <div class="flex justify-between items-end mb-4 px-1 shrink-0"> <!-- 2. Добавили shrink-0, чтобы заголовок не сжимался -->
+        <h2 class="font-techno font-bold text-2xl text-slate-900 dark:text-white">Лента индустрии</h2>
+    </div>
+    
+    <!-- 3. Заменили h-full на flex-1 и добавили min-h-0 (важно для скролла внутри флексов) -->
+    <div class="bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm flex-1 min-h-0 max-h-[420px] overflow-y-auto no-scrollbar relative">
                     <!-- Вертикальная линия таймлайна (декоративная) -->
                     <div class="absolute left-7 top-6 bottom-6 w-px bg-slate-100 dark:bg-slate-800"></div>
 
@@ -419,10 +489,10 @@
 			
 
         </div>
-				<!-- РЯД 4:  -->
-        <div class="grid grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+		<!-- РЯД 4:  -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-12">
 		<!-- РЯД 4: ЛЕНТА ФОРУМА -->
-			<section class="lg:col-span-2">
+			<section class="lg:col-span-2 sm:col-span-1">
 				<div class="flex justify-between items-end mb-4 px-1">
 					<h2 class="font-techno font-bold text-2xl text-slate-900 dark:text-white">Обсуждения на форуме</h2>
 					<a href="#" class="text-sm text-cyan-600 dark:text-cyanAccent hover:underline">Перейти на форум &rarr;</a>
@@ -596,5 +666,56 @@
 			switcher.classList.toggle('bg-cyanAccent/20');
 		});
 	</script>
+	
+	<!-- СКРИПТ МОБИЛЬНОГО МЕНЮ -->
+<script>
+    const burgerBtn = document.getElementById('burger-btn');
+    const closeMenuBtn = document.getElementById('close-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileBackdrop = document.getElementById('mobile-backdrop');
+    const mobilePanel = document.getElementById('mobile-panel');
+    const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+
+    // Функция открытия меню
+    function openMenu() {
+        mobileMenu.classList.remove('pointer-events-none');
+        // Показываем фон
+        mobileBackdrop.classList.remove('opacity-0');
+        mobileBackdrop.classList.add('opacity-100');
+        // Выдвигаем панель
+        mobilePanel.classList.remove('translate-x-full');
+        mobilePanel.classList.add('translate-x-0');
+        // Блокируем скролл на странице
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Функция закрытия меню
+    function closeMenu() {
+        // Убираем фон
+        mobileBackdrop.classList.remove('opacity-100');
+        mobileBackdrop.classList.add('opacity-0');
+        // Прячем панель
+        mobilePanel.classList.remove('translate-x-0');
+        mobilePanel.classList.add('translate-x-full');
+        // Ждем окончания анимации (300ms) перед тем как полностью отключить клики
+        setTimeout(() => {
+            mobileMenu.classList.add('pointer-events-none');
+        }, 300);
+        // Возвращаем скролл
+        document.body.style.overflow = '';
+    }
+
+    // Слушатели событий
+    burgerBtn.addEventListener('click', openMenu);
+    closeMenuBtn.addEventListener('click', closeMenu);
+    mobileBackdrop.addEventListener('click', closeMenu); // Закрытие по клику вне меню
+
+    // Подключаем переключатель темы внутри мобильного меню
+    if(mobileThemeToggle) {
+        mobileThemeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+    }
+</script>
 </body>
 </html>
