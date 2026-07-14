@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next-Gen Gamedev Dashboard</title>
+    
+    <!-- Подключаем Tailwind CSS с поддержкой переключения тем -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        techno: ['Rajdhani', 'sans-serif'], // Технологичный шрифт для акцентов
+                    },
+                    colors: {
+                        darkBase: '#0B0F19',
+                        darkCard: '#111827',
+                        cyanAccent: '#00F0FF',
+                        pinkAccent: '#FF007A'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Подключаем шрифты Inter (читаемость) и Rajdhani (техно-стиль) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rajdhani:ital,wght@0,500;0,600;0,700;1,700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Плавные переходы для всех элементов при смене темы */
+        * { transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; }
+        
+        /* Стили для имитации обложек игр без картинок */
+        .game-cover-1 { background: linear-gradient(135deg, #2b1055 0%, #7597de 100%); }
+        .game-cover-2 { background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%); }
+        .game-cover-3 { background: linear-gradient(135deg, #1f1c2c 0%, #928dab 100%); }
+		
+		/* Стили для переключения состояний */
+		.guest-ui { display: none !important; }
+		.user-ui { display: flex !important; }
+
+		body.is-guest .guest-ui { display: flex !important; }
+		body.is-guest .user-ui { display: none !important; }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-darkBase text-slate-800 dark:text-slate-200 min-h-screen pb-16 overflow-x-hidden relative font-sans">
+
+    <!-- Атмосферные фоновые засветы (видны только в темной теме) -->
+    <div class="hidden dark:block absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-pinkAccent/5 blur-[120px] pointer-events-none"></div>
+    <div class="hidden dark:block absolute top-[20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-cyanAccent/5 blur-[150px] pointer-events-none"></div>
+
+<!-- ШАПКА САЙТА -->
+<header class="sticky top-0 z-50 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-darkBase/80 backdrop-blur-md">
+    <div class="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
+        
+        <!-- Логотип -->
+        <div class="flex items-center space-x-3">
+            <span class="text-3xl font-techno italic font-bold tracking-widest text-slate-900 dark:text-white">
+                You<span class="text-cyan-600 dark:text-cyanAccent">Indie</span>
+            </span>
+        </div>
+
+        <!-- Навигация -->
+        <nav class="hidden xl:flex space-x-6 text-sm font-semibold text-slate-600 dark:text-slate-400">
+            <a href="#" class="hover:text-slate-900 dark:hover:text-white transition-colors">Новости</a>
+            <a href="#" class="hover:text-slate-900 dark:hover:text-white transition-colors">Статьи</a>
+            <a href="#" class="hover:text-slate-900 dark:hover:text-white transition-colors">Дневники</a>
+            <a href="#" class="hover:text-slate-900 dark:hover:text-white transition-colors">Витрина</a>
+            <a href="#" class="hover:text-slate-900 dark:hover:text-white transition-colors">Ресурсы</a>
+            <a href="#" class="hover:text-slate-900 dark:hover:text-white transition-colors">Форум</a>
+            <a href="#" class="hover:text-slate-900 dark:hover:text-white transition-colors">Работа</a>
+        </nav>
+
+        <!-- Правая панель (Профиль + Действия) -->
+        <div class="flex items-center space-x-5">
+            
+ 
+
+		<!-- БЛОК ГОСТЯ (Скрыт по умолчанию, появляется в режиме гостя) -->
+			<div class="guest-ui hidden items-center space-x-3">
+				<a href="#" class="text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">Войти</a>
+				<button class="bg-cyanAccent text-darkBase text-sm font-bold px-4 py-2 rounded-lg hover:bg-cyan-400 transition-colors">Регистрация</button>
+			</div>
+
+			<!-- БЛОК АВТОРИЗОВАННОГО (Виден по умолчанию, скрывается в режиме гостя) -->
+			<div class="user-ui flex items-center space-x-5">
+				<button class="flex items-center space-x-2 text-sm font-semibold px-4 py-2 rounded-lg bg-slate-900 dark:bg-cyanAccent/10 text-white dark:text-cyanAccent border border-transparent dark:border-cyanAccent/30 hover:bg-slate-800 dark:hover:bg-cyanAccent/20 transition-all">
+					<span>+ Опубликовать</span>
+				</button>
+				<button class="relative p-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">
+					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+					<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-pinkAccent rounded-full border-2 border-white dark:border-darkBase"></span>
+				</button>
+				<div class="flex items-center space-x-3 pl-2 border-l border-slate-200 dark:border-slate-800">
+					<div class="text-right hidden lg:block">
+						<div class="text-sm font-bold text-slate-900 dark:text-white leading-none">NeoDev</div>
+						<div class="text-[10px] text-slate-500 dark:text-slate-400 mt-1 uppercase font-bold tracking-wider">Техно-художник</div>
+					</div>
+					<div class="relative">
+						<div class="w-10 h-10 rounded-full bg-gradient-to-tr from-pinkAccent to-cyanAccent p-[2px]">
+							<div class="w-full h-full rounded-full bg-slate-200 dark:bg-darkBase"></div>
+						</div>
+						<span class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white dark:border-darkBase rounded-full"></span>
+					</div>
+				</div>
+			</div>
+
+            <!-- Переключатель Темы -->
+            <button id="theme-toggle" class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+                <svg id="icon-moon" class="w-5 h-5 text-cyanAccent hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                <svg id="icon-sun" class="w-5 h-5 text-orange-500 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+            </button>
+			
+			
+        </div>
+		
+    </div>
+</header>
+
+    <!-- ОСНОВНАЯ СЕТКА (ДАШБОРД) -->
+    <main class="max-w-[1400px] mx-auto px-6 mt-8 space-y-6">
+        
+        <!-- РЯД 1: HERO СЕКЦИЯ (65% / 35%) -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- Главный фокус (Левая колонка) -->
+            <section class="lg:col-span-2 bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-md dark:shadow-none transition-all relative group flex flex-col justify-end p-8 min-h-[420px]">
+                <!-- Имитация сочного арта на фоне -->
+                <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-10 dark:opacity-40"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-white via-white/80 dark:from-darkBase dark:via-darkBase/80 to-transparent z-10"></div>
+                
+                <div class="relative z-20">
+                    <!-- Современные бейджи с закруглениями -->
+                    <div class="flex space-x-3 mb-4">
+                        <div class="px-3 py-1 rounded-lg bg-cyan-50 dark:bg-cyanAccent/10 border border-cyan-200 dark:border-cyanAccent/20 text-cyan-700 dark:text-cyanAccent text-xs font-bold uppercase tracking-wide">
+                            Проект недели
+                        </div>
+                        <div class="px-3 py-1 rounded-lg bg-pink-50 dark:bg-pinkAccent/10 border border-pink-200 dark:border-pinkAccent/20 text-pink-700 dark:text-pinkAccent text-xs font-bold uppercase tracking-wide">
+                            UE 5.4
+                        </div>
+                    </div>
+
+                    <h1 class="text-3xl lg:text-5xl font-techno font-bold tracking-tight text-slate-900 dark:text-white mb-4">
+                        Квантовый Рендеринг: Новые подходы к генерации геометрии
+                    </h1>
+                    
+                    <p class="text-slate-600 dark:text-slate-400 mb-6 max-w-2xl text-sm lg:text-base leading-relaxed">
+                        Разбираем архитектуру процедурной генерации окружения на лету. Как отказаться от классических микро-полигонов и использовать воксельные массивы для бесшовных миров.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4">
+                        <button class="bg-slate-900 dark:bg-cyanAccent text-white dark:text-darkBase font-semibold px-6 py-3 rounded-xl shadow-lg dark:shadow-[0_0_20px_rgba(0,240,255,0.2)] hover:scale-[1.02] transition-transform">
+                            Читать исследование
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Телеметрия и Активность (Правая колонка) -->
+            <div class="flex flex-col gap-6">
+                <!-- Профиль -->
+                <section class="bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-pinkAccent to-cyanAccent p-[2px]">
+                            <div class="w-full h-full rounded-[10px] bg-white dark:bg-darkCard flex items-center justify-center">
+                                <span class="font-techno font-bold text-lg">UX</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 dark:text-white">NeoDeveloper</h3>
+                            <p class="text-sm text-slate-500 dark:text-cyanAccent/80">Senior Tech Art</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-5 pt-5 border-t border-slate-100 dark:border-slate-800 grid grid-cols-2 gap-4 text-sm">
+                        <div class="bg-slate-50 dark:bg-slate-800/50 p-3 rounded-xl border border-slate-100 dark:border-slate-700/50">
+                            <span class="block text-slate-500 dark:text-slate-400 text-xs mb-1">Рейтинг</span>
+                            <span class="font-techno font-bold text-lg">2,408</span>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-800/50 p-3 rounded-xl border border-slate-100 dark:border-slate-700/50">
+                            <span class="block text-slate-500 dark:text-slate-400 text-xs mb-1">Проекты</span>
+                            <span class="font-techno font-bold text-lg">3</span>
+                        </div>
+                    </div>
+                </section>
+				
+				<!-- БЛОК: АКТИВНОСТЬ НА ФОРУМЕ -->
+
+                <!-- Live-активность (Без квадратных скобок, чистый UI) -->
+                <section class="bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm flex-grow">
+                    <h3 class="font-techno font-bold text-lg mb-4 text-slate-900 dark:text-white flex items-center justify-between">
+                        Прямой эфир
+                        <span class="flex h-2 w-2 relative">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pinkAccent opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-pinkAccent"></span>
+                        </span>
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex flex-col">
+                            <div class="text-xs text-slate-400 mb-1">Только что • Форум</div>
+                            <a href="#" class="text-sm font-medium hover:text-cyan-600 dark:hover:text-cyanAccent transition-colors">Как правильно настроить LODы в Blender для импорта?</a>
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="text-xs text-slate-400 mb-1">15 мин назад • Вакансии</div>
+                            <a href="#" class="text-sm font-medium hover:text-cyan-600 dark:hover:text-cyanAccent transition-colors">Ищем C++ программиста для сетевого шутера (RevShare)</a>
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="text-xs text-slate-400 mb-1">1 час назад • Девлог</div>
+                            <a href="#" class="text-sm font-medium hover:text-cyan-600 dark:hover:text-cyanAccent transition-colors">Переписал контроллер персонажа с нуля: результаты</a>
+                        </div>
+                    </div>
+                </section>
+				
+				
+            </div>
+        </div>
+
+        <!-- РЯД 2: Проекты И НОВОСТИ (Дополнительные блоки дашборда) -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- Проекты проектов (Занимает 2 колонки) -->
+            <section class="lg:col-span-2">
+                <div class="flex justify-between items-end mb-4 px-1">
+                    <h2 class="font-techno font-bold text-2xl text-slate-900 dark:text-white">Свежие проекты</h2>
+                    <a href="#" class="text-sm text-cyan-600 dark:text-cyanAccent hover:underline">Смотреть все &rarr;</a>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- Карточка игры 1 -->
+                    <div class="group bg-white dark:bg-darkCard rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 cursor-pointer">
+                        <div class="h-32 game-cover-1 relative">
+                            <div class="absolute bottom-2 right-2 px-2 py-0.5 rounded-md bg-black/60 backdrop-blur-sm border border-white/10 text-[10px] font-bold text-white uppercase">WebGL</div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyanAccent transition-colors truncate">Neon Drifter</h4>
+                            <p class="text-xs text-slate-500 mt-1">Аркадная гонка в стиле 80-х</p>
+                        </div>
+                    </div>
+                    <!-- Карточка игры 2 -->
+                    <div class="group bg-white dark:bg-darkCard rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 cursor-pointer">
+                        <div class="h-32 game-cover-2 relative"></div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyanAccent transition-colors truncate">Silent Echoes</h4>
+                            <p class="text-xs text-slate-500 mt-1">Хоррор-головоломка от первого лица</p>
+                        </div>
+                    </div>
+                    <!-- Карточка игры 3 -->
+                    <div class="group bg-white dark:bg-darkCard rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 cursor-pointer">
+                        <div class="h-32 game-cover-3 relative"></div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyanAccent transition-colors truncate">Void Survivors</h4>
+                            <p class="text-xs text-slate-500 mt-1">Bullet-hell в открытом космосе</p>
+                        </div>
+                    </div>
+					
+                </div>
+				
+				
+            </section>
+
+            <!-- Блок Вакансий/Индустрии -->
+            <section>
+                <div class="flex justify-between items-end mb-4 px-1">
+                    <h2 class="font-techno font-bold text-2xl text-slate-900 dark:text-white">Индустрия</h2>
+                </div>
+                <div class="bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm space-y-4">
+                    <!-- Вакансия -->
+                    <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-100 dark:border-slate-700/50 hover:border-cyan-200 dark:hover:border-cyanAccent/40 transition-colors cursor-pointer">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-bold text-sm text-slate-900 dark:text-white leading-tight">3D Environment Artist</h4>
+                            <span class="text-[10px] px-2 py-0.5 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800/50">Ремоут</span>
+                        </div>
+                        <p class="text-xs text-slate-500">Stellar Games Studio • от $2000</p>
+                    </div>
+                    <!-- Вакансия -->
+                    <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-100 dark:border-slate-700/50 hover:border-cyan-200 dark:hover:border-cyanAccent/40 transition-colors cursor-pointer">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-bold text-sm text-slate-900 dark:text-white leading-tight">VFX Artist (Ниагара)</h4>
+                            <span class="text-[10px] px-2 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 border border-purple-200 dark:border-purple-800/50">Проект</span>
+                        </div>
+                        <p class="text-xs text-slate-500">Инди-команда "Red Horizon"</p>
+                    </div>
+					
+					
+                </div>
+            </section>
+        </div>
+		
+		
+		<!-- РЯД 3: СТАТЬИ И НОВОСТИ -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- СТАТЬИ / ЛОНГРИДЫ (Занимает 2 колонки) -->
+            <section class="lg:col-span-2">
+                <div class="flex justify-between items-end mb-4 px-1">
+                    <h2 class="font-techno font-bold text-2xl text-slate-900 dark:text-white">Свежие статьи</h2>
+                    <a href="#" class="text-sm text-cyan-600 dark:text-cyanAccent hover:underline">База знаний &rarr;</a>
+                </div>
+                
+                <!-- Сетка статей (2 в ряд на десктопе, 1 на мобилках) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    
+                    <!-- Карточка статьи 1 -->
+                    <article class="group bg-white dark:bg-darkCard rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 hover:border-cyan-200 dark:hover:border-cyanAccent/50 transition-all shadow-sm hover:shadow-md dark:shadow-none flex flex-col cursor-pointer">
+                        <!-- Обложка статьи (плейсхолдер-градиент) -->
+                        <div class="h-40 bg-gradient-to-br from-slate-700 to-slate-900 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+                            <!-- Тег категории -->
+                            <div class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-black/50 backdrop-blur-md border border-white/10 text-xs font-bold text-white tracking-wide">
+                                ТУТОРИАЛ
+                            </div>
+                        </div>
+                        <div class="p-5 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-bold text-lg text-slate-900 dark:text-white leading-tight mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyanAccent transition-colors">
+                                    Математика для шейдеров: как перестать бояться матриц
+                                </h3>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">
+                                    Разбираем на пальцах и кубиках, как работает умножение матриц в HLSL/GLSL, и зачем это нужно при написании кастомного освещения.
+                                </p>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800/50 flex justify-between items-center text-xs text-slate-400">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-5 h-5 rounded-full bg-cyan-100 dark:bg-cyanAccent/20"></div>
+                                    <span class="font-medium text-slate-600 dark:text-slate-300">ShaderGuru</span>
+                                </div>
+                                <span>Читать 8 мин</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Карточка статьи 2 -->
+                    <article class="group bg-white dark:bg-darkCard rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 hover:border-cyan-200 dark:hover:border-cyanAccent/50 transition-all shadow-sm hover:shadow-md dark:shadow-none flex flex-col cursor-pointer">
+                        <div class="h-40 bg-gradient-to-br from-emerald-800 to-slate-900 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+                            <div class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-black/50 backdrop-blur-md border border-white/10 text-xs font-bold text-white tracking-wide">
+                                ГЕЙМДИЗАЙН
+                            </div>
+                        </div>
+                        <div class="p-5 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-bold text-lg text-slate-900 dark:text-white leading-tight mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyanAccent transition-colors">
+                                    Экономика выживания: баланс ресурсов в играх
+                                </h3>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">
+                                    Почему игроки забрасывают вашу выживалку через 2 часа? Строим математическую модель распределения лута, которая удерживает в напряжении.
+                                </p>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800/50 flex justify-between items-center text-xs text-slate-400">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-5 h-5 rounded-full bg-pink-100 dark:bg-pinkAccent/20"></div>
+                                    <span class="font-medium text-slate-600 dark:text-slate-300">IndieMind</span>
+                                </div>
+                                <span>Читать 12 мин</span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- ЛЕНТА НОВОСТЕЙ (Занимает 1 колонку) -->
+            <section>
+                <div class="flex justify-between items-end mb-4 px-1">
+                    <h2 class="font-techno font-bold text-2xl text-slate-900 dark:text-white">Лента индустрии</h2>
+                </div>
+                
+                <div class="bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm h-full max-h-[420px] overflow-y-auto no-scrollbar relative">
+                    
+                    <!-- Вертикальная линия таймлайна (декоративная) -->
+                    <div class="absolute left-7 top-6 bottom-6 w-px bg-slate-100 dark:bg-slate-800"></div>
+
+                    <div class="space-y-6 relative z-10">
+                        
+                        <!-- Новость 1 -->
+                        <div class="flex gap-4 group cursor-pointer">
+                            <div class="w-4 h-4 mt-1 rounded-full border-2 border-white dark:border-darkCard bg-cyan-500 shadow-[0_0_8px_rgba(0,240,255,0.4)] flex-shrink-0"></div>
+                            <div>
+                                <div class="text-[11px] text-cyan-600 dark:text-cyanAccent font-bold uppercase tracking-wider mb-1">Релизы • 2 часа назад</div>
+                                <h4 class="text-sm font-semibold text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyanAccent transition-colors">Вышел Godot 4.3: Поддерживается Web-экспорт многопоточности</h4>
+                            </div>
+                        </div>
+
+                        <!-- Новость 2 -->
+                        <div class="flex gap-4 group cursor-pointer">
+                            <div class="w-4 h-4 mt-1 rounded-full border-2 border-white dark:border-darkCard bg-slate-300 dark:bg-slate-600 group-hover:bg-pink-500 transition-colors flex-shrink-0"></div>
+                            <div>
+                                <div class="text-[11px] text-slate-500 mb-1">Бизнес • 5 часов назад</div>
+                                <h4 class="text-sm font-semibold text-slate-900 dark:text-white group-hover:text-pink-600 dark:group-hover:text-pinkAccent transition-colors">Epic Games снижает комиссию Unreal Engine для мобильных игр</h4>
+                            </div>
+                        </div>
+
+                        <!-- Новость 3 -->
+                        <div class="flex gap-4 group cursor-pointer">
+                            <div class="w-4 h-4 mt-1 rounded-full border-2 border-white dark:border-darkCard bg-slate-300 dark:bg-slate-600 group-hover:bg-cyan-500 transition-colors flex-shrink-0"></div>
+                            <div>
+                                <div class="text-[11px] text-slate-500 mb-1">Инструменты • Вчера</div>
+                                <h4 class="text-sm font-semibold text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyanAccent transition-colors">Blender 4.1 получил масштабное обновление физики тканей</h4>
+                            </div>
+                        </div>
+
+                        <!-- Новость 4 -->
+                        <div class="flex gap-4 group cursor-pointer">
+                            <div class="w-4 h-4 mt-1 rounded-full border-2 border-white dark:border-darkCard bg-slate-300 dark:bg-slate-600 transition-colors flex-shrink-0"></div>
+                            <div>
+                                <div class="text-[11px] text-slate-500 mb-1">Скандалы • Вчера</div>
+                                <h4 class="text-sm font-semibold text-slate-900 dark:text-white opacity-80">Unity снова меняет структуру подписок, пользователи негодуют</h4>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+			
+			
+
+        </div>
+				<!-- РЯД 4:  -->
+        <div class="grid grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+		<!-- РЯД 4: ЛЕНТА ФОРУМА -->
+			<section class="lg:col-span-2">
+				<div class="flex justify-between items-end mb-4 px-1">
+					<h2 class="font-techno font-bold text-2xl text-slate-900 dark:text-white">Обсуждения на форуме</h2>
+					<a href="#" class="text-sm text-cyan-600 dark:text-cyanAccent hover:underline">Перейти на форум &rarr;</a>
+				</div>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+					
+					<!-- Карточка 1 -->
+					<div class="group bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 rounded-2xl p-4 hover:border-cyan-200 dark:hover:border-cyanAccent/50 transition-all cursor-pointer">
+						<div class="flex gap-4">
+							<div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center flex-shrink-0">
+								<span class="text-slate-400 font-bold">#1</span>
+							</div>
+							<div class="overflow-hidden">
+								<h4 class="font-bold text-slate-900 dark:text-white truncate mb-1">Как оптимизировать частицы в Niagara?</h4>
+								<p class="text-xs text-slate-500 dark:text-slate-400 mb-2">Последний ответ: <span class="text-slate-700 dark:text-slate-300 font-medium">ShaderGuru</span> • 15 мин назад</p>
+								<p class="text-sm text-slate-600 dark:text-slate-500 line-clamp-2">
+									Ребята, пробовал метод с эмиттером, но при 1000 юнитах ФПС проседает до 30. Кто-нибудь пробовал кастомные Compute шейдеры для этого?
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Карточка 2 -->
+					<div class="group bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 rounded-2xl p-4 hover:border-cyan-200 dark:hover:border-cyanAccent/50 transition-all cursor-pointer">
+						<div class="flex gap-4">
+							<div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center flex-shrink-0">
+								<span class="text-slate-400 font-bold">#2</span>
+							</div>
+							<div class="overflow-hidden">
+								<h4 class="font-bold text-slate-900 dark:text-white truncate mb-1">Ищу моделлера в проект (Miami Beach)</h4>
+								<p class="text-xs text-slate-500 dark:text-slate-400 mb-2">Последний ответ: <span class="text-slate-700 dark:text-slate-300 font-medium">NeoDev</span> • 1 час назад</p>
+								<p class="text-sm text-slate-600 dark:text-slate-500 line-clamp-2">
+									Сеттинг тропического Майами 80-х. Нужен человек, который умеет в low-poly архитектуру и PBR текстуры пальм. Оплата сдельная.
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Карточка 3 -->
+					<div class="group bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 rounded-2xl p-4 hover:border-cyan-200 dark:hover:border-cyanAccent/50 transition-all cursor-pointer">
+						<div class="flex gap-4">
+							<div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center flex-shrink-0">
+								<span class="text-slate-400 font-bold">#3</span>
+							</div>
+							<div class="overflow-hidden">
+								<h4 class="font-bold text-slate-900 dark:text-white truncate mb-1">Проблема с импортом FBX в Blender 4.1</h4>
+								<p class="text-xs text-slate-500 dark:text-slate-400 mb-2">Последний ответ: <span class="text-slate-700 dark:text-slate-300 font-medium">BlenderMaster</span> • 3 часа назад</p>
+								<p class="text-sm text-slate-600 dark:text-slate-500 line-clamp-2">
+									После обновления блендер начал криво импортировать кости. У всех такая проблема или это только у меня с аддоном?
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Карточка 4 -->
+					<div class="group bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 rounded-2xl p-4 hover:border-cyan-200 dark:hover:border-cyanAccent/50 transition-all cursor-pointer">
+						<div class="flex gap-4">
+							<div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center flex-shrink-0">
+								<span class="text-slate-400 font-bold">#4</span>
+							</div>
+							<div class="overflow-hidden">
+								<h4 class="font-bold text-slate-900 dark:text-white truncate mb-1">Посоветуйте движок для мобильного платформера</h4>
+								<p class="text-xs text-slate-500 dark:text-slate-400 mb-2">Последний ответ: <span class="text-slate-700 dark:text-slate-300 font-medium">DevBot</span> • 5 часов назад</p>
+								<p class="text-sm text-slate-600 dark:text-slate-500 line-clamp-2">
+									Что лучше выбрать под 2D платформер: Godot или остаться на Unity? Важна производительность на бюджетных Android смартфонах.
+								</p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</section>
+		
+		</div>
+    </main>
+
+	<!-- ФУТЕР (ПОДВАЛ САЙТА) -->
+    <footer class="mt-16 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-darkBase pt-12 pb-8">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                
+                <!-- Блок 1: Логотип и миссия -->
+                <div class="col-span-1 md:col-span-1">
+                    <span class="text-2xl font-techno italic font-bold tracking-widest text-slate-900 dark:text-white mb-4 block">
+                        You<span class="text-cyan-600 dark:text-cyanAccent">Indie</span>
+                    </span>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">
+                        Платформа для создателей миров. Делись опытом, находи команду и показывай свои проекты индустрии.
+                    </p>
+                    <!-- Соцсети (Иконки-заглушки) -->
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 hover:text-cyan-600 dark:hover:text-cyanAccent transition-colors">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                        </a>
+                        <a href="#" class="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 hover:text-pink-600 dark:hover:text-pinkAccent transition-colors">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Блок 2: Навигация -->
+                <div class="col-span-1">
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-4">Платформа</h4>
+                    <ul class="space-y-2 text-sm text-slate-500 dark:text-slate-400">
+                        <li><a href="#" class="hover:text-cyan-600 dark:hover:text-cyanAccent transition-colors">Проекты игр</a></li>
+                        <li><a href="#" class="hover:text-cyan-600 dark:hover:text-cyanAccent transition-colors">Девлоги и Статьи</a></li>
+                        <li><a href="#" class="hover:text-cyan-600 dark:hover:text-cyanAccent transition-colors">Форум сообщества</a></li>
+                        <li><a href="#" class="hover:text-cyan-600 dark:hover:text-cyanAccent transition-colors">Вакансии и Резюме</a></li>
+                    </ul>
+                </div>
+
+                <!-- Блок 3: Разработчикам -->
+                <div class="col-span-1">
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-4">Разработчикам</h4>
+                    <ul class="space-y-2 text-sm text-slate-500 dark:text-slate-400">
+                        <li><a href="#" class="hover:text-pink-600 dark:hover:text-pinkAccent transition-colors">YouIndie API <span class="ml-1 px-1.5 py-0.5 rounded text-[10px] bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">BETA</span></a></li>
+                        <li><a href="#" class="hover:text-pink-600 dark:hover:text-pinkAccent transition-colors">Правила публикации</a></li>
+                        <li><a href="#" class="hover:text-pink-600 dark:hover:text-pinkAccent transition-colors">Реклама на сайте</a></li>
+                        <li><a href="#" class="hover:text-pink-600 dark:hover:text-pinkAccent transition-colors">Интеграция WebGL</a></li>
+                    </ul>
+                </div>
+
+                <!-- Блок 4: Поддержка -->
+                <div class="col-span-1">
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-4">Поддержка</h4>
+                    <ul class="space-y-2 text-sm text-slate-500 dark:text-slate-400">
+                        <li><a href="#" class="hover:text-cyan-600 dark:hover:text-cyanAccent transition-colors">Частые вопросы (FAQ)</a></li>
+                        <li><a href="#" class="hover:text-cyan-600 dark:hover:text-cyanAccent transition-colors">Служба поддержки</a></li>
+                        <li><a href="#" class="hover:text-cyan-600 dark:hover:text-cyanAccent transition-colors">Сообщить о баге</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Нижняя полоса футера (Копирайт) -->
+            <div class="pt-6 border-t border-slate-100 dark:border-slate-800/50 flex flex-col md:flex-row justify-between items-center text-xs text-slate-400">
+                <p>&copy; 2026 NexusDev Portal. Все права защищены.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-slate-600 dark:hover:text-slate-300">Политика конфиденциальности</a>
+                    <a href="#" class="hover:text-slate-600 dark:hover:text-slate-300">Условия использования</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Скрипт переключения тем на уровне корня HTML (Tailwind Dark Mode) -->
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+
+        themeToggleBtn.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+        });
+    </script>
+	
+	<!-- ВИДЖЕТ ПЕРЕКЛЮЧЕНИЯ СОСТОЯНИЙ -->
+	<div id="debug-switcher" class="fixed right-0 top-1/2 -translate-y-1/2 z-[100] bg-slate-900 text-white p-2 rounded-l-xl shadow-2xl flex flex-col items-center space-y-2 border border-slate-700">
+		<div class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-1">State</div>
+		<button id="toggle-state" class="w-10 h-10 rounded-lg bg-slate-800 hover:bg-cyanAccent/20 border border-slate-700 flex items-center justify-center transition-all">
+			<svg class="w-5 h-5 text-cyanAccent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+		</button>
+	</div>
+
+	<script>
+		const switcher = document.getElementById('toggle-state');
+		const body = document.body;
+		
+		switcher.addEventListener('click', () => {
+			body.classList.toggle('is-guest');
+			// Меняем иконку или просто визуальный фидбек
+			switcher.classList.toggle('bg-cyanAccent/20');
+		});
+	</script>
+</body>
+</html>
