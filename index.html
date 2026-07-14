@@ -41,9 +41,11 @@
         * { transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; }
         
         /* Стили для имитации обложек игр без картинок */
-        .game-cover-1 { background: linear-gradient(135deg, #2b1055 0%, #7597de 100%); }
-        .game-cover-2 { background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%); }
-        .game-cover-3 { background: linear-gradient(135deg, #1f1c2c 0%, #928dab 100%); }
+        .game-cover-1 {background: url("Neon Drifter.jpg"); background-size: cover; background-position-y: center;}
+        .game-cover-2 {background: url("Silent Echoes.jpg"); background-size: cover; background-position-y: center;}
+        .game-cover-3 {background: url("Void Survivors.jpg"); background-size: cover; background-position-y: center;}
+        .article-1-bg  {background: url("Matrix.png"); background-size: cover; background-position-y: center;}
+        .article-2-bg  {background: url("Economic.png"); background-size: cover; background-position-y: center;}
 		
 		/* Стили для переключения состояний */
 		.guest-ui { display: none !important; }
@@ -377,7 +379,7 @@
                     <!-- Карточка статьи 1 -->
                     <article class="group bg-white dark:bg-darkCard rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 hover:border-cyan-200 dark:hover:border-cyanAccent/50 transition-all shadow-sm hover:shadow-md dark:shadow-none flex flex-col cursor-pointer">
                         <!-- Обложка статьи (плейсхолдер-градиент) -->
-                        <div class="h-40 bg-gradient-to-br from-slate-700 to-slate-900 relative overflow-hidden">
+                        <div class="h-40 article-1-bg from-slate-700 to-slate-900 relative overflow-hidden">
                             <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
                             <!-- Тег категории -->
                             <div class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-black/50 backdrop-blur-md border border-white/10 text-xs font-bold text-white tracking-wide">
@@ -405,7 +407,7 @@
 
                     <!-- Карточка статьи 2 -->
                     <article class="group bg-white dark:bg-darkCard rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 hover:border-cyan-200 dark:hover:border-cyanAccent/50 transition-all shadow-sm hover:shadow-md dark:shadow-none flex flex-col cursor-pointer">
-                        <div class="h-40 bg-gradient-to-br from-emerald-800 to-slate-900 relative overflow-hidden">
+                        <div class="h-40 article-2-bg relative overflow-hidden">
                             <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
                             <div class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-black/50 backdrop-blur-md border border-white/10 text-xs font-bold text-white tracking-wide">
                                 ГЕЙМДИЗАЙН
