@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" class="dark">
+<html lang="ru" class="dark overflow-x-hidden">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,6 +47,11 @@
         .game-cover-3 {background: url("Void Survivors.jpg"); background-size: cover; background-position-y: center;}
         .article-1-bg  {background: url("Matrix.jpg"); background-size: cover; background-position-y: center;}
         .article-2-bg  {background: url("Economic.jpg"); background-size: cover; background-position-y: center;}
+        .asset-1-bg  {background: url("weapon_pack.jpg"); background-size: cover; background-position-y: center;}
+        .asset-2-bg  {background: url("godot_script.jpg"); background-size: cover; background-position-y: center;}
+        .asset-3-bg  {background: url("syntwave_track.jpg"); background-size: cover; background-position-y: center;}
+        .asset-4-bg  {background: url("CRT.jpg"); background-size: cover; background-position-y: center;}
+        .screenshot-of-day-bg  {background: url("Screenshot.jpg"); background-size: cover; background-position-y: center;}
 		
 		/* Стили для переключения состояний */
 		.guest-ui { display: none !important; }
@@ -177,7 +182,7 @@
 </header>
 
 <!-- МОБИЛЬНОЕ БОКОВОЕ МЕНЮ (Выезжает справа) -->
-<div id="mobile-menu" class="fixed inset-0 z-[100] pointer-events-none">
+<div id="mobile-menu" class="fixed inset-0 z-[100] pointer-events-none invisible">
     
     <!-- Затемнение фона (Backdrop) -->
     <div id="mobile-backdrop" class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm opacity-0 transition-opacity duration-300 cursor-pointer"></div>
@@ -227,7 +232,7 @@
             <!-- Главный фокус (Левая колонка) -->
             <section class="lg:col-span-2 bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-md dark:shadow-none transition-all relative group flex flex-col justify-end p-8 min-h-[420px]">
                 <!-- Имитация сочного арта на фоне -->
-                <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1658324362365-aa0b067fd804?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center opacity-60 dark:opacity-60"></div>
+                <div class="absolute inset-0 bg-[url('article-bg.jpg')] bg-cover bg-center opacity-70 dark:opacity-70"></div>
                 <div class="absolute inset-0 bg-gradient-to-t from-white via-white/80 dark:from-darkBase dark:via-darkBase/80 to-transparent z-10"></div>
                 
                 <div class="relative z-20">
@@ -447,7 +452,7 @@
                     
                     <!-- Ассет 1 -->
                     <div class="group bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden cursor-pointer hover:border-cyan-200 dark:hover:border-cyanAccent/40 transition-all flex flex-col h-full">
-                        <div class="h-40 bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center relative shrink-0">
+                        <div class="h-40 asset-1-bg flex items-center justify-center relative shrink-0">
                             <span class="font-techno font-bold text-white text-xs px-2 py-0.5 rounded bg-black/40 backdrop-blur-sm absolute top-2 right-2">3D</span>
                         </div>
                         <!-- 3. flex-grow и flex flex-col распределяют контент внутри карточки -->
@@ -465,7 +470,7 @@
 
                     <!-- Ассет 2 -->
                     <div class="group bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden cursor-pointer hover:border-cyan-200 dark:hover:border-cyanAccent/40 transition-all flex flex-col h-full">
-                        <div class="h-40 bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center relative shrink-0">
+                        <div class="h-40 asset-2-bg to-teal-600 flex items-center justify-center relative shrink-0">
                             <span class="font-techno font-bold text-white text-xs px-2 py-0.5 rounded bg-black/40 backdrop-blur-sm absolute top-2 right-2">CODE</span>
                         </div>
                         <div class="p-3 flex-grow flex flex-col justify-between">
@@ -482,7 +487,7 @@
 
                     <!-- Ассет 3 -->
                     <div class="group bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden cursor-pointer hover:border-cyan-200 dark:hover:border-cyanAccent/40 transition-all flex flex-col h-full">
-                        <div class="h-40 bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center relative shrink-0">
+                        <div class="h-40 asset-3-bg flex items-center justify-center relative shrink-0">
                             <span class="font-techno font-bold text-white text-xs px-2 py-0.5 rounded bg-black/40 backdrop-blur-sm absolute top-2 right-2">AUDIO</span>
                         </div>
                         <div class="p-3 flex-grow flex flex-col justify-between">
@@ -499,7 +504,7 @@
 
                     <!-- Ассет 4 -->
                     <div class="group bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden cursor-pointer hover:border-cyan-200 dark:hover:border-cyanAccent/40 transition-all flex flex-col h-full">
-                        <div class="h-40 bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center relative shrink-0">
+                        <div class="h-40 asset-4-bg flex items-center justify-center relative shrink-0">
                             <span class="font-techno font-bold text-white text-xs px-2 py-0.5 rounded bg-black/40 backdrop-blur-sm absolute top-2 right-2">SHADER</span>
                         </div>
                         <div class="p-3 flex-grow flex flex-col justify-between">
@@ -575,7 +580,7 @@
                 <!-- Огромный скриншот-карточка -->
                 <div class="relative h-[320px] rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm group cursor-pointer">
                     <!-- Сам скриншот (заглушка из Unsplash, яркий игровой арт) -->
-                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1000')] bg-cover bg-center group-hover:scale-105 transition-transform duration-700"></div>
+                    <div class="absolute inset-0 screenshot-of-day-bg bg-cover bg-center group-hover:scale-105 transition-transform duration-700"></div>
                     <!-- Затемнение снизу для читаемости текста -->
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
                     
@@ -1290,9 +1295,10 @@
     const mobilePanel = document.getElementById('mobile-panel');
     const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
 
-    // Функция открытия меню
+// Функция открытия меню
     function openMenu() {
-        mobileMenu.classList.remove('pointer-events-none');
+        // Убрали pointer-events-none и invisible
+        mobileMenu.classList.remove('pointer-events-none', 'invisible');
         // Показываем фон
         mobileBackdrop.classList.remove('opacity-0');
         mobileBackdrop.classList.add('opacity-100');
@@ -1311,9 +1317,10 @@
         // Прячем панель
         mobilePanel.classList.remove('translate-x-0');
         mobilePanel.classList.add('translate-x-full');
-        // Ждем окончания анимации (300ms) перед тем как полностью отключить клики
+        // Ждем окончания анимации (300ms) перед тем как полностью отключить клики и расчет границ
         setTimeout(() => {
-            mobileMenu.classList.add('pointer-events-none');
+            // Вернули pointer-events-none и invisible
+            mobileMenu.classList.add('pointer-events-none', 'invisible');
         }, 300);
         // Возвращаем скролл
         document.body.style.overflow = '';
