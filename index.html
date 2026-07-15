@@ -27,7 +27,6 @@
                         darkCard: '#111827',
                         cyanAccent: '#00F0F0',
                         pinkAccent: '#F00073',
-						
                     }
                 }
             }
@@ -1325,15 +1324,7 @@
         </div>
     </footer>
 
-    <!-- Скрипт переключения тем на уровне корня HTML (Tailwind Dark Mode) -->
-    <script>
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const htmlElement = document.documentElement;
 
-        themeToggleBtn.addEventListener('click', () => {
-            htmlElement.classList.toggle('dark');
-        });
-    </script>
 	
 	<!-- ВИДЖЕТ ПЕРЕКЛЮЧЕНИЯ СОСТОЯНИЙ -->
 	<div id="debug-switcher" class="fixed right-0 top-1/2 -translate-y-1/2 z-[100] bg-slate-900 text-white p-2 rounded-l-xl shadow-2xl flex flex-col items-center space-y-2 border border-slate-700">
@@ -1430,6 +1421,16 @@
 
 		</div>
 	</div>
+
+    <!-- Скрипт переключения тем на уровне корня HTML (Tailwind Dark Mode) -->
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+
+        themeToggleBtn.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+        });
+    </script>
 
 	<script>
 		const switcher = document.getElementById('toggle-state');

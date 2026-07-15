@@ -19,7 +19,7 @@
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        techno: ['Rajdhani', 'sans-serif'],
+                        techno: ['Rajdhani', 'sans-serif'], // Технологичный шрифт для акцентов
                     },
                     colors: {
                         darkBase: '#0B0F19',
@@ -56,6 +56,16 @@
         .dev-glow {
             box-shadow: 0 0 25px rgba(240, 0, 115, 0.4);
         }
+		
+		        /* Индивидуальные тени-засветы с адаптивной рамкой */
+        .auth-shadow-login {
+            box-shadow: 0 0 50px -5px rgba(0, 240, 240, 0.15), 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            border-color: rgba(0, 240, 240, 0.25) !important;
+        }
+        .auth-shadow-register {
+            box-shadow: 0 0 50px -5px rgba(240, 0, 115, 0.15), 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            border-color: rgba(240, 0, 115, 0.25) !important;
+        }
     </style>
 </head>
 <body class="bg-slate-50 dark:bg-darkBase text-slate-800 dark:text-slate-200 min-h-screen pb-16 overflow-x-hidden relative font-sans">
@@ -91,10 +101,12 @@
                 <a href="#" class="hover:text-slate-900 dark:hover:text-white transition-colors">Работа</a>
             </nav>
             <div class="flex items-center space-x-3 md:space-x-5 shrink-0">
-                <div class="guest-ui hidden items-center space-x-3">
-                    <button class="text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">Войти</button>
-                    <button class="bg-cyanAccent text-darkBase text-sm font-bold px-4 py-2 rounded-lg hover:bg-cyan-400 transition-colors">Регистрация</button>
-                </div>
+                 <div class="guest-ui hidden items-center space-x-3">
+					<!-- Добавили id="login-btn" -->
+					<button id="login-btn" class="text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">Войти</button>
+					<!-- Добавили id="register-btn" -->
+					<button id="register-btn" class="bg-cyanAccent text-darkBase text-sm font-bold px-4 py-2 rounded-lg hover:bg-cyan-400 transition-colors">Регистрация</button>
+				</div>
                 <div class="user-ui flex items-center space-x-2 md:space-x-5">
                     <button class="flex items-center justify-center w-10 h-10 md:w-auto md:h-auto md:px-4 md:py-2 rounded-lg bg-slate-900 dark:bg-cyanAccent/10 text-white dark:text-cyanAccent border border-transparent dark:border-cyanAccent/30 hover:bg-slate-800 dark:hover:bg-cyanAccent/20 transition-all">
                         <svg class="w-5 h-5 block md:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
@@ -167,13 +179,30 @@
                         <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">@neodeveloper • Был в сети 10 минут назад</p>
                     </div>
 
+                    <!-- Адаптивные кнопки действий (Владелец vs Гость) -->
                     <div class="flex items-center gap-3 shrink-0">
-                        <button class="bg-cyan-600 dark:bg-cyanAccent text-white dark:text-darkBase font-bold text-xs px-5 py-2.5 rounded-xl hover:scale-[1.02] transition-transform shadow-md">
-                            Написать
-                        </button>
-                        <button class="border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold text-xs px-5 py-2.5 rounded-xl transition-colors">
-                            Подписаться
-                        </button>
+                        
+                        <!-- БЛОК ДЛЯ ГОСТЕЙ (Видят другие пользователи) -->
+                        <div class="guest-ui hidden items-center gap-3">
+                            <button class="bg-cyan-600 dark:bg-cyanAccent text-white dark:text-darkBase font-bold text-xs px-5 py-2.5 rounded-xl hover:scale-[1.02] transition-transform shadow-md">
+                                Написать
+                            </button>
+                            <button class="border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold text-xs px-5 py-2.5 rounded-xl transition-colors">
+                                Подписаться
+                            </button>
+                        </div>
+
+                        <!-- БЛОК ДЛЯ ВЛАДЕЛЬЦА (Видит сам NeoDev, когда вошел на сайт) -->
+                        <div class="user-ui flex items-center gap-3">
+                            <button class="border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold text-xs px-4 py-2.5 rounded-xl transition-colors flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                Настройки
+                            </button>
+                            <button class="bg-pink-600 dark:bg-pinkAccent text-white dark:text-darkBase font-bold text-xs px-5 py-2.5 rounded-xl hover:scale-[1.02] transition-transform shadow-md shadow-pinkAccent/10">
+                                + Добавить работу
+                            </button>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -621,6 +650,7 @@
         </div>
 
     </main>
+	
 
 	<!-- ФУТЕР (ПОДВАЛ САЙТА) -->
     <footer class="mt-16 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-darkBase pt-12 pb-8">
@@ -702,7 +732,103 @@
         </div>
     </footer>
 
-    <!-- СКРИПТЫ -->
+
+	<!-- ВИДЖЕТ ПЕРЕКЛЮЧЕНИЯ СОСТОЯНИЙ -->
+	<div id="debug-switcher" class="fixed right-0 top-1/2 -translate-y-1/2 z-[100] bg-slate-900 text-white p-2 rounded-l-xl shadow-2xl flex flex-col items-center space-y-2 border border-slate-700">
+		<div class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-1">State</div>
+		<button id="toggle-state" class="w-10 h-10 rounded-lg bg-slate-800 hover:bg-cyanAccent/20 border border-slate-700 flex items-center justify-center transition-all">
+			<svg class="w-5 h-5 text-cyanAccent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+		</button>
+	</div>
+	
+		<!-- МОДАЛЬНОЕ ОКНО АВТОРИЗАЦИИ (Вход / Регистрация / QR) -->
+	<div id="auth-modal" class="fixed inset-0 z-[150] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+		
+		<!-- Затемнение фона с эффектом размытия -->
+		<div id="auth-backdrop" class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm cursor-pointer"></div>
+		
+		<!-- Коробка модального окна -->
+		<div id="auth-box" class="relative w-full max-w-md bg-white dark:bg-darkCard border rounded-2xl p-6 md:p-8 transform scale-95 transition-all duration-300 z-10 flex flex-col auth-shadow-login">
+			
+			<!-- Кнопка закрытия -->
+			<button id="auth-close" class="absolute top-4 right-4 text-slate-400 hover:text-pinkAccent transition-colors">
+				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+			</button>
+
+			<!-- Табы переключения (Вход / Регистрация) -->
+			<div class="flex border-b border-slate-100 dark:border-slate-800 mb-6 shrink-0">
+				<button id="tab-login-btn" class="flex-1 pb-3 text-center text-sm font-bold border-b-2 border-cyanAccent text-slate-900 dark:text-white transition-all">Войти</button>
+				<button id="tab-register-btn" class="flex-1 pb-3 text-center text-sm font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-all">Регистрация</button>
+			</div>
+
+			<!-- КОНТЕНТ 1: ФОРМА ВХОДА -->
+			<form id="form-login" class="space-y-4">
+				<div>
+					<label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">Ник или Почта</label>
+					<input type="text" placeholder="Твой ник или почта" required class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-cyanAccent transition-colors">
+				</div>
+				<div>
+					<div class="flex justify-between items-baseline mb-1.5">
+						<label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Парольная фраза</label>
+						<a href="#" class="text-[10px] text-cyan-600 dark:text-cyanAccent hover:underline">Забыл?</a>
+					</div>
+					<input type="password" placeholder="••••••••••••" required class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-cyanAccent transition-colors">
+				</div>
+				<button type="submit" class="w-full bg-cyan-600 dark:bg-cyanAccent text-white dark:text-darkBase font-bold py-3 rounded-xl hover:scale-[1.02] transition-transform shadow-md dark:shadow-[0_0_15px_rgba(0,240,240,0.2)]">
+					Авторизоваться
+				</button>
+				
+				<!-- Кнопка переключения на QR-вход -->
+				<button id="toggle-qr-btn" type="button" class="w-full text-center text-xs text-slate-400 hover:text-cyanAccent transition-colors mt-2 flex items-center justify-center gap-2">
+					<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M3 11h8V3H3v8zm2-6h4v4H5V5zM3 21h8v-8H3v8zm2-6h4v4H5v-4zM13 3v8h8V3h-8zm6 6h-4V5h4v4zm-6 12h3v-3h-3v3zm3-3h2.5v-3h-2.5v3zm3 3H21v-3h-2v3zm-3-3h3v-2.5h-3v2.5z"/></svg>
+					Быстрый вход через QR-код
+				</button>
+			</form>
+
+			<!-- КОНТЕНТ 2: ФОРМА РЕГИСТРАЦИИ (Скрыта по умолчанию) -->
+			<form id="form-register" class="space-y-4 hidden">
+				<div>
+					<label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">Никнейм</label>
+					<input type="text" placeholder="Придумай ник" required class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-pinkAccent transition-colors">
+				</div>
+				<div>
+					<label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">Электронная почта</label>
+					<input type="email" placeholder="Тут твоя почта" required class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-pinkAccent transition-colors">
+				</div>
+				<div>
+					<label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">Парольная фраза</label>
+					<input type="password" placeholder="Твоя секретная фраза" required class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-pinkAccent transition-colors">
+				</div>
+				<button type="submit" class="w-full bg-pink-600 dark:bg-pinkAccent text-white dark:text-darkBase font-bold py-3 rounded-xl hover:scale-[1.02] transition-transform shadow-md dark:shadow-[0_0_15px_rgba(240,0,115,0.2)]">
+					Создать аккаунт
+				</button>
+				<p class="text-[10px] text-center text-slate-400">Нажимая кнопку, ты соглашаешься на обработку данных. Письмо активации придет на почту.</p>
+			</form>
+
+			<!-- КОНТЕНТ 3: ПОДВИЖНЫЙ QR-КОД (Скрыт по умолчанию) -->
+			<div id="form-qr" class="hidden flex flex-col items-center justify-center py-4 space-y-4">
+				<span class="text-xs font-semibold text-cyanAccent uppercase tracking-widest">Авторизация по QR</span>
+				
+				<!-- Контейнер QR с бегущим лазерным сканером -->
+				<div class="relative w-48 h-48 border border-cyanAccent/30 p-4 rounded-2xl bg-slate-900/50 flex items-center justify-center overflow-hidden">
+					<!-- Бегущая линия лазера -->
+					<div class="absolute inset-x-0 h-0.5 bg-cyanAccent shadow-[0_0_10px_rgba(0,240,240,1)] animate-bounce" style="animation-duration: 2.5s; top: 10%;"></div>
+					
+					<!-- Сам QR код (svg макет) -->
+					<svg class="w-40 h-40 text-cyanAccent opacity-80" fill="currentColor" viewBox="0 0 24 24">
+						<path d="M3 11h8V3H3v8zm2-6h4v4H5V5zM3 21h8v-8H3v8zm2-6h4v4H5v-4zM13 3v8h8V3h-8zm6 6h-4V5h4v4zm-6 12h3v-3h-3v3zm3-3h2.5v-3h-2.5v3zm3 3H21v-3h-2v3zm-3-3h3v-2.5h-3v2.5z"/>
+					</svg>
+				</div>
+				
+				<p class="text-center text-[10px] text-slate-400 max-w-[240px]">Открой мобильную версию сайта, где ты авторизован, сфотографируй этот код, и сессия активируется.</p>
+				
+				<button id="back-to-login" class="text-xs text-slate-500 hover:text-white transition-colors">Вернуться к обычному входу</button>
+			</div>
+
+		</div>
+	</div>
+
+    <!-- Скрипт переключения тем на уровне корня HTML (Tailwind Dark Mode) -->
     <script>
         const themeToggleBtn = document.getElementById('theme-toggle');
         const htmlElement = document.documentElement;
@@ -711,5 +837,156 @@
             htmlElement.classList.toggle('dark');
         });
     </script>
+
+	<script>
+		const switcher = document.getElementById('toggle-state');
+		const body = document.body;
+		
+		switcher.addEventListener('click', () => {
+			body.classList.toggle('is-guest');
+			// Меняем иконку или просто визуальный фидбек
+			switcher.classList.toggle('bg-cyanAccent/20');
+		});
+	</script>
+	
+	<!-- СКРИПТ МОБИЛЬНОГО МЕНЮ -->
+<script>
+    const burgerBtn = document.getElementById('burger-btn');
+    const closeMenuBtn = document.getElementById('close-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileBackdrop = document.getElementById('mobile-backdrop');
+    const mobilePanel = document.getElementById('mobile-panel');
+    const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+
+// Функция открытия меню
+    function openMenu() {
+        // Убрали pointer-events-none и invisible
+        mobileMenu.classList.remove('pointer-events-none', 'invisible');
+        // Показываем фон
+        mobileBackdrop.classList.remove('opacity-0');
+        mobileBackdrop.classList.add('opacity-100');
+        // Выдвигаем панель
+        mobilePanel.classList.remove('translate-x-full');
+        mobilePanel.classList.add('translate-x-0');
+        // Блокируем скролл на странице
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Функция закрытия меню
+    function closeMenu() {
+        // Убираем фон
+        mobileBackdrop.classList.remove('opacity-100');
+        mobileBackdrop.classList.add('opacity-0');
+        // Прячем панель
+        mobilePanel.classList.remove('translate-x-0');
+        mobilePanel.classList.add('translate-x-full');
+        // Ждем окончания анимации (300ms) перед тем как полностью отключить клики и расчет границ
+        setTimeout(() => {
+            // Вернули pointer-events-none и invisible
+            mobileMenu.classList.add('pointer-events-none', 'invisible');
+        }, 300);
+        // Возвращаем скролл
+        document.body.style.overflow = '';
+    }
+
+    // Слушатели событий
+    burgerBtn.addEventListener('click', openMenu);
+    closeMenuBtn.addEventListener('click', closeMenu);
+    mobileBackdrop.addEventListener('click', closeMenu); // Закрытие по клику вне меню
+
+    // Подключаем переключатель темы внутри мобильного меню
+    if(mobileThemeToggle) {
+        mobileThemeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+    }
+</script>
+
+<!-- СКРИПТ УПРАВЛЕНИЯ АВТОРИЗАЦИЕЙ -->
+<script>
+    const authModal = document.getElementById('auth-modal');
+    const authBackdrop = document.getElementById('auth-backdrop');
+    const authBox = document.getElementById('auth-box');
+    const authClose = document.getElementById('auth-close');
+    
+    const loginBtn = document.getElementById('login-btn');
+    const registerBtn = document.getElementById('register-btn');
+    
+    const tabLoginBtn = document.getElementById('tab-login-btn');
+    const tabRegisterBtn = document.getElementById('tab-register-btn');
+    
+    const formLogin = document.getElementById('form-login');
+    const formRegister = document.getElementById('form-register');
+    const formQr = document.getElementById('form-qr');
+    
+    const toggleQrBtn = document.getElementById('toggle-qr-btn');
+    const backToLoginBtn = document.getElementById('back-to-login');
+
+    // Функция открытия модалки
+    function openAuth(tab = 'login') {
+        authModal.classList.remove('pointer-events-none');
+        authModal.classList.add('opacity-100');
+        authBox.classList.remove('scale-95');
+        authBox.classList.add('scale-100');
+        document.body.style.overflow = 'hidden'; // Блокируем скролл фона
+        switchTab(tab);
+    }
+
+    // Функция закрытия модалки
+    function closeAuth() {
+        authModal.classList.add('pointer-events-none');
+        authModal.classList.remove('opacity-100');
+        authBox.classList.remove('scale-100');
+        authBox.classList.add('scale-95');
+        document.body.style.overflow = ''; // Возвращаем скролл
+    }
+
+// Переключение вкладок с динамической сменой неонового свечения
+    function switchTab(tab) {
+        if (tab === 'login') {
+            tabLoginBtn.className = "flex-1 pb-3 text-center text-sm font-bold border-b-2 border-cyanAccent text-slate-900 dark:text-white transition-all";
+            tabRegisterBtn.className = "flex-1 pb-3 text-center text-sm font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-all";
+            
+            // Меняем тень на циановую
+            authBox.classList.remove('auth-shadow-register');
+            authBox.classList.add('auth-shadow-login');
+
+            formLogin.classList.remove('hidden');
+            formRegister.classList.add('hidden');
+            formQr.classList.add('hidden');
+        } else if (tab === 'register') {
+            tabRegisterBtn.className = "flex-1 pb-3 text-center text-sm font-bold border-b-2 border-pinkAccent text-slate-900 dark:text-white transition-all";
+            tabLoginBtn.className = "flex-1 pb-3 text-center text-sm font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-all";
+            
+            // Меняем тень на розовую
+            authBox.classList.remove('auth-shadow-login');
+            authBox.classList.add('auth-shadow-register');
+
+            formRegister.classList.remove('hidden');
+            formLogin.classList.add('hidden');
+            formQr.classList.add('hidden');
+        } else if (tab === 'qr') {
+            // Для QR оставляем красивую циановую тень
+            authBox.classList.remove('auth-shadow-register');
+            authBox.classList.add('auth-shadow-login');
+
+            formLogin.classList.add('hidden');
+            formRegister.classList.add('hidden');
+            formQr.classList.remove('hidden');
+        }
+    }
+
+    // Слушатели событий
+    loginBtn.addEventListener('click', () => openAuth('login'));
+    registerBtn.addEventListener('click', () => openAuth('register'));
+    authClose.addEventListener('click', closeAuth);
+    authBackdrop.addEventListener('click', closeAuth);
+    
+    tabLoginBtn.addEventListener('click', () => switchTab('login'));
+    tabRegisterBtn.addEventListener('click', () => switchTab('register'));
+    
+    toggleQrBtn.addEventListener('click', () => switchTab('qr'));
+    backToLoginBtn.addEventListener('click', () => switchTab('login'));
+</script>
 </body>
 </html>
