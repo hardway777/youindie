@@ -983,6 +983,161 @@
 
         </div>
 		<!-- РЯД ФОРУМ:  -->
+		
+<!-- РЯД: КОНКУРСЫ И ПАРТНЕРЫ -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- Левая часть: Главный конкурс (Занимает 2 колонки) -->
+            <section class="lg:col-span-2 flex flex-col h-full">
+                <div class="flex justify-between items-end mb-4 px-1 shrink-0">
+                    <h2 class="font-techno font-bold text-2xl text-slate-900 dark:text-white flex items-center gap-2">
+                        Текущий конкурс
+                        <span class="relative flex h-2.5 w-2.5">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-500 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500"></span>
+                        </span>
+                    </h2>
+                    <a href="#" class="text-sm text-cyan-600 dark:text-cyanAccent hover:underline">Прошедшие конкурсы &rarr;</a>
+                </div>
+                
+                <!-- Карточка конкурса (Выровнена по высоте, flex-1) -->
+                <div class="bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm flex-1 flex flex-col justify-between gap-6 relative overflow-hidden group">
+                    <!-- Декоративное свечение золота на фоне -->
+                    <div class="absolute -top-24 -left-24 w-48 h-48 bg-amber-500/10 blur-[100px] pointer-events-none"></div>
+
+                    <div class="relative z-10 flex flex-col md:flex-row gap-6 justify-between items-stretch">
+                        
+                        <!-- Левая половина: Информация -->
+                        <div class="flex flex-col justify-between space-y-4 md:w-1/2">
+                            <div>
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-500 border border-amber-200 dark:border-amber-500/20">Идет прием заявок</span>
+                                    <span class="text-xs text-slate-400">Жанр: <span class="font-bold text-slate-600 dark:text-slate-300">RPG / Adventure</span></span>
+                                </div>
+                                <h3 class="text-xl md:text-2xl font-techno font-bold text-slate-900 dark:text-white leading-tight">Epic Indie Cup 2026</h3>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Крупнейший смотр отечественных инди-игр на движках Unreal Engine и Godot.</p>
+                            </div>
+
+                            <!-- Таймлайн конкурса -->
+                            <div class="bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 rounded-xl p-3.5 flex items-center justify-between text-xs">
+                                <div class="flex flex-col">
+                                    <span class="text-[10px] text-slate-400 uppercase font-bold">Старт приема</span>
+                                    <span class="font-semibold text-slate-900 dark:text-white mt-0.5">01.06.2026</span>
+                                </div>
+                                <div class="h-8 w-px bg-slate-200 dark:bg-slate-800"></div>
+                                <div class="flex flex-col text-right">
+                                    <span class="text-[10px] text-slate-400 uppercase font-bold">Дедлайн подачи</span>
+                                    <span class="font-semibold text-pinkAccent mt-0.5">15.07.2026</span>
+                                </div>
+                            </div>
+
+                            <!-- Организатор -->
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyanAccent to-pinkAccent p-[1px] shrink-0">
+                                    <div class="w-full h-full rounded-[7px] bg-slate-200 dark:bg-darkBase flex items-center justify-center font-bold text-xs">YI</div>
+                                </div>
+                                <div>
+                                    <span class="text-[9px] text-slate-400 uppercase block leading-none">Организатор</span>
+                                    <span class="text-xs font-bold text-slate-800 dark:text-slate-200">YouIndie Team & VK Play</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Правая половина: Бюджет и Распределение -->
+                        <div class="flex flex-col justify-between border-t md:border-t-0 md:border-l border-slate-100 dark:border-slate-800/60 pt-6 md:pt-0 md:pl-6 md:w-1/2">
+                            
+                            <!-- Призовой фонд -->
+                            <div>
+                                <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Призовой фонд</span>
+                                <div class="font-techno font-bold text-3xl md:text-4xl text-amber-500 drop-shadow-[0_0_10px_rgba(245,158,11,0.3)] mt-1">500,000 ₽</div>
+                            </div>
+
+                            <!-- Распределение фонда -->
+                            <div class="space-y-2 my-4">
+                                <div class="flex justify-between items-center text-xs">
+                                    <span class="text-slate-500 dark:text-slate-400 flex items-center gap-1.5">🥇 1 место:</span>
+                                    <span class="font-bold text-slate-900 dark:text-white">250,000 ₽</span>
+                                </div>
+                                <div class="flex justify-between items-center text-xs">
+                                    <span class="text-slate-500 dark:text-slate-400 flex items-center gap-1.5">🥈 2 место:</span>
+                                    <span class="font-bold text-slate-900 dark:text-white">150,000 ₽</span>
+                                </div>
+                                <div class="flex justify-between items-center text-xs">
+                                    <span class="text-slate-500 dark:text-slate-400 flex items-center gap-1.5">🥉 3 место:</span>
+                                    <span class="font-bold text-slate-900 dark:text-white">100,000 ₽</span>
+                                </div>
+                            </div>
+
+                            <!-- Ссылка на страницу конкурса -->
+                            <a href="#" class="w-full bg-amber-500 hover:bg-amber-600 dark:bg-amber-500/10 text-white dark:text-amber-500 border border-transparent dark:border-amber-500/30 font-bold text-xs py-2.5 rounded-xl hover:scale-[1.01] transition-all text-center block shadow-md dark:shadow-[0_0_12px_rgba(245,158,11,0.15)]">
+                                Страница конкурса &rarr;
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <!-- Нижняя плашка: Детализированная статистика (Инсайдерская жиза!) -->
+                    <div class="grid grid-cols-3 gap-4 pt-4 border-t border-slate-100 dark:border-slate-800/60 text-center shrink-0">
+                        <div class="bg-slate-50 dark:bg-slate-900/30 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800/40">
+                            <span class="block text-[9px] text-slate-400 uppercase font-bold">Подали заявки</span>
+                            <span class="font-techno font-bold text-base md:text-lg text-slate-800 dark:text-white mt-1 block">184 проекта</span>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-900/30 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800/40">
+                            <span class="block text-[9px] text-slate-400 uppercase font-bold">В игре сейчас</span>
+                            <span class="font-techno font-bold text-base md:text-lg text-cyanAccent mt-1 block">112 команд</span>
+                        </div>
+                        <!-- Та самая козырная статистика -->
+                        <div class="bg-slate-50 dark:bg-slate-900/30 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800/40">
+                            <span class="block text-[9px] text-slate-400 uppercase font-bold">Слились (не успели)</span>
+                            <span class="font-techno font-bold text-base md:text-lg text-pinkAccent mt-1 block">72 (39%)</span>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Правая часть: Партнеры конкурса (Занимает 1 колонку) -->
+            <section class="flex flex-col h-full">
+                <div class="flex justify-between items-end mb-4 px-1 shrink-0">
+                    <h2 class="font-techno font-bold text-2xl text-slate-900 dark:text-white">Партнеры</h2>
+                </div>
+                
+                <!-- Список партнеров -->
+                <div class="bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm flex-1 flex flex-col justify-between gap-4">
+                    
+                    <!-- Сетка логотипов -->
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="h-16 rounded-xl bg-slate-50 dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800/40 flex flex-col items-center justify-center text-center p-2">
+                            <span class="text-xs font-bold text-slate-800 dark:text-white">VK Play</span>
+                            <span class="text-[8px] text-slate-400 mt-0.5">Генеральный партнер</span>
+                        </div>
+                        <div class="h-16 rounded-xl bg-slate-50 dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800/40 flex flex-col items-center justify-center text-center p-2">
+                            <span class="text-xs font-bold text-slate-800 dark:text-white">Let's Train</span>
+                            <span class="text-[8px] text-slate-400 mt-0.5">Разработка 3D</span>
+                        </div>
+                        <div class="h-16 rounded-xl bg-slate-50 dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800/40 flex flex-col items-center justify-center text-center p-2">
+                            <span class="text-xs font-bold text-slate-800 dark:text-white">Yandex Games</span>
+                            <span class="text-[8px] text-slate-400 mt-0.5">Дистрибуция WebGL</span>
+                        </div>
+                        <div class="h-16 rounded-xl bg-slate-50 dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800/40 flex flex-col items-center justify-center text-center p-2">
+                            <span class="text-xs font-bold text-slate-800 dark:text-white">IndieGo</span>
+                            <span class="text-[8px] text-slate-400 mt-0.5">Информационный спонсор</span>
+                        </div>
+                    </div>
+
+                    <!-- Призыв к действию: Стать спонсором -->
+                    <div class="p-4 rounded-xl bg-gradient-to-tr from-amber-500/5 to-pinkAccent/5 border border-slate-100 dark:border-slate-800/60 text-center relative overflow-hidden group mt-2">
+                        <p class="text-xs text-slate-600 dark:text-slate-300 mb-3 relative z-10 leading-normal">Хочешь поддержать молодые инди-команды и заявить о своей компании?</p>
+                        <button class="w-full bg-amber-500 text-white font-bold text-xs py-2 rounded-lg hover:scale-[1.02] transition-transform relative z-10 shadow-md">
+                            Стать спонсором
+                        </button>
+                    </div>
+
+                </div>
+            </section>
+			
+        </div>
+		
 <!-- РЯД ФОРУМ:  -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-12">
 			
