@@ -245,7 +245,7 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <!-- Работа 1 -->
-                        <div class="group bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden cursor-pointer">
+                        <div class="group bg-white hover:border-cyan-200 dark:hover:border-cyanAccent/40 transition-all dark:bg-darkCard border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden cursor-pointer">
                             <div class="h-44 bg-[url('LandscapeGen01.jpg')] bg-cover bg-center group-hover:scale-102 transition-transform duration-500"></div>
                             <div class="p-4">
                                 <h4 class="font-bold text-sm text-slate-900 dark:text-white">Процедурный генератор ландшафтов UE 5.4</h4>
@@ -253,7 +253,7 @@
                             </div>
                         </div>
                         <!-- Работа 2 -->
-                        <div class="group bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden cursor-pointer">
+                        <div class="group bg-white hover:border-cyan-200 dark:hover:border-cyanAccent/40 transition-all dark:bg-darkCard border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden cursor-pointer">
                             <div class="h-44 bg-[url('CRT-Shader.jpg')] bg-cover bg-center group-hover:scale-102 transition-transform duration-500"></div>
                             <div class="p-4">
                                 <h4 class="font-bold text-sm text-slate-900 dark:text-white">Кастомный CRT-шейдер для пиксель-арта</h4>
@@ -425,10 +425,10 @@
                     <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
                         <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest block mb-2.5">Контакты и сети</span>
                         <div class="grid grid-cols-2 gap-2">
-                            <a href="https://github.com" target="_blank" class="flex items-center justify-center gap-2 p-2 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 text-xs font-semibold hover:border-cyanAccent transition-colors">
+                            <a href="https://github.com" target="_blank" class="flex items-center justify-center gap-2 p-2 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 text-xs font-semibold hover:border-cyan-200 dark:hover:border-cyanAccent/40 transition-all">
                                 <span>GitHub</span>
                             </a>
-                            <a href="https://artstation.com" target="_blank" class="flex items-center justify-center gap-2 p-2 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 text-xs font-semibold hover:border-cyanAccent transition-colors">
+                            <a href="https://artstation.com" target="_blank" class="flex items-center justify-center gap-2 p-2 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 text-xs font-semibold hover:border-cyan-200 dark:hover:border-cyanAccent/40 transition-all">
                                 <span>ArtStation</span>
                             </a>
                         </div>
@@ -516,18 +516,92 @@
                     </div>
                 </section>
 
-                <!-- Виджет 4: Активность на форуме (Статистика цифр) -->
+                <!-- Виджет 4: Детальная аналитика репутации -->
                 <section class="bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 rounded-3xl p-5 shadow-sm">
-                    <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest block leading-none mb-3">Активность на форуме</span>
-                    <div class="grid grid-cols-2 gap-3 text-center">
-                        <div class="bg-slate-50 dark:bg-slate-900/40 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800/40">
-                            <span class="block text-[9px] text-slate-400 uppercase">Тем создано</span>
-                            <span class="font-techno font-bold text-base text-slate-800 dark:text-white mt-0.5 block">14</span>
+                    <div class="flex justify-between items-baseline mb-3">
+                        <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest block leading-none">Репутация сообщества</span>
+                        <span class="text-xs font-bold text-amber-500">2,408 XP</span>
+                    </div>
+
+                    <!-- Почетный статус / Бейдж характера пользователя -->
+                    <div class="p-2.5 rounded-xl bg-cyan-500/5 border border-cyanAccent/20 flex items-center gap-2 mb-4 shrink-0">
+                        <span class="text-base">🤝</span>
+                        <div class="overflow-hidden">
+                            <span class="text-[9px] font-bold text-cyanAccent uppercase tracking-wider block leading-none">Особая роль</span>
+                            <span class="text-xs font-bold text-slate-800 dark:text-slate-200 mt-0.5 block">Ментор сообщества</span>
                         </div>
-                        <div class="bg-slate-50 dark:bg-slate-900/40 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800/40">
-                            <span class="block text-[9px] text-slate-400 uppercase">Сообщений</span>
-                            <span class="font-techno font-bold text-base text-slate-800 dark:text-white mt-0.5 block">342</span>
+                    </div>
+
+                    <div class="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                        
+                        <!-- Категория 1: Общение и помощь -->
+                        <div>
+                            <span class="text-[9px] font-bold text-cyanAccent uppercase tracking-widest block mb-2">Форум и Общение (+1,350 XP)</span>
+                            <div class="space-y-2 text-xs">
+                                <div>
+                                    <div class="flex justify-between text-[11px] text-slate-500 dark:text-slate-400 mb-1">
+                                        <span>Ответы и помощь новичкам</span>
+                                        <span class="font-bold text-slate-700 dark:text-slate-300">+620 XP</span>
+                                    </div>
+                                    <div class="w-full bg-slate-100 dark:bg-slate-800 h-1 rounded-full overflow-hidden">
+                                        <div class="bg-cyanAccent h-full rounded-full" style="width: 75%;"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-[11px] text-slate-500 dark:text-slate-400 mb-1">
+                                        <span>Создание полезных тем</span>
+                                        <span class="font-bold text-slate-700 dark:text-slate-300">+410 XP</span>
+                                    </div>
+                                    <div class="w-full bg-slate-100 dark:bg-slate-800 h-1 rounded-full overflow-hidden">
+                                        <div class="bg-cyanAccent h-full rounded-full" style="width: 50%;"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-[11px] text-slate-500 dark:text-slate-400 mb-1">
+                                        <span>Комментарии к чужим проектам</span>
+                                        <span class="font-bold text-slate-700 dark:text-slate-300">+320 XP</span>
+                                    </div>
+                                    <div class="w-full bg-slate-100 dark:bg-slate-800 h-1 rounded-full overflow-hidden">
+                                        <div class="bg-cyanAccent h-full rounded-full" style="width: 35%;"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- Категория 2: Разработка и Медиа -->
+                        <div class="pt-3 border-t border-slate-100 dark:border-slate-800/60">
+                            <span class="text-[9px] font-bold text-pinkAccent uppercase tracking-widest block mb-2">Проекты и Медиа (+1,058 XP)</span>
+                            <div class="space-y-2 text-xs">
+                                <div>
+                                    <div class="flex justify-between text-[11px] text-slate-500 dark:text-slate-400 mb-1">
+                                        <span>Оценки его игр от игроков</span>
+                                        <span class="font-bold text-slate-700 dark:text-slate-300">+530 XP</span>
+                                    </div>
+                                    <div class="w-full bg-slate-100 dark:bg-slate-800 h-1 rounded-full overflow-hidden">
+                                        <div class="bg-pinkAccent h-full rounded-full" style="width: 65%;"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-[11px] text-slate-500 dark:text-slate-400 mb-1">
+                                        <span>Рейтинг статей и блогов</span>
+                                        <span class="font-bold text-slate-700 dark:text-slate-300">+348 XP</span>
+                                    </div>
+                                    <div class="w-full bg-slate-100 dark:bg-slate-800 h-1 rounded-full overflow-hidden">
+                                        <div class="bg-pinkAccent h-full rounded-full" style="width: 45%;"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-[11px] text-slate-500 dark:text-slate-400 mb-1">
+                                        <span>Лайки скриншотов в галерее</span>
+                                        <span class="font-bold text-slate-700 dark:text-slate-300">+180 XP</span>
+                                    </div>
+                                    <div class="w-full bg-slate-100 dark:bg-slate-800 h-1 rounded-full overflow-hidden">
+                                        <div class="bg-pinkAccent h-full rounded-full" style="width: 25%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </section>
 
