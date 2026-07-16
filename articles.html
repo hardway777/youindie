@@ -92,11 +92,11 @@
             <a href="news.html" class="hover:text-slate-900 dark:hover:text-white transition-colors">Новости</a>
             <!-- Подсветили СТАТЬИ циановым -->
             <a href="articles.html" class="text-slate-900 dark:text-white hover:text-slate-900 dark:hover:text-white transition-colors">Статьи</a>
-            <a href="#" 			class="hover:text-slate-900 dark:hover:text-white transition-colors">Дневники</a>
-            <a href="#" 			class="hover:text-slate-900 dark:hover:text-white transition-colors">Витрина</a>
-            <a href="#" 			class="hover:text-slate-900 dark:hover:text-white transition-colors">Ресурсы</a>
-            <a href="#" 			class="hover:text-slate-900 dark:hover:text-white transition-colors">Форум</a>
-            <a href="#" 			class="hover:text-slate-900 dark:hover:text-white transition-colors">Работа</a>
+            <a href="#" class="hover:text-slate-900 dark:hover:text-white transition-colors">Дневники</a>
+            <a href="#" class="hover:text-slate-900 dark:hover:text-white transition-colors">Витрина</a>
+            <a href="#" class="hover:text-slate-900 dark:hover:text-white transition-colors">Ресурсы</a>
+            <a href="#" class="hover:text-slate-900 dark:hover:text-white transition-colors">Форум</a>
+            <a href="#" class="hover:text-slate-900 dark:hover:text-white transition-colors">Работа</a>
         </nav>
 
         <!-- Правая панель -->
@@ -594,4 +594,58 @@
     // Функция закрытия модалки
     function closeAuth() {
         authModal.classList.add('pointer-events-none');
-        authM
+        authModal.classList.remove('opacity-100');
+        authBox.classList.remove('scale-100');
+        authBox.classList.add('scale-95');
+        document.body.style.overflow = ''; // Возвращаем скролл
+    }
+
+// Переключение вкладок с динамической сменой неонового свечения
+    function switchTab(tab) {
+        if (tab === 'login') {
+            tabLoginBtn.className = "flex-1 pb-3 text-center text-sm font-bold border-b-2 border-cyanAccent text-slate-900 dark:text-white transition-all";
+            tabRegisterBtn.className = "flex-1 pb-3 text-center text-sm font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-all";
+            
+            // Меняем тень на циановую
+            authBox.classList.remove('auth-shadow-register');
+            authBox.classList.add('auth-shadow-login');
+
+            formLogin.classList.remove('hidden');
+            formRegister.classList.add('hidden');
+            formQr.classList.add('hidden');
+        } else if (tab === 'register') {
+            tabRegisterBtn.className = "flex-1 pb-3 text-center text-sm font-bold border-b-2 border-pinkAccent text-slate-900 dark:text-white transition-all";
+            tabLoginBtn.className = "flex-1 pb-3 text-center text-sm font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-all";
+            
+            // Меняем тень на розовую
+            authBox.classList.remove('auth-shadow-login');
+            authBox.classList.add('auth-shadow-register');
+
+            formRegister.classList.remove('hidden');
+            formLogin.classList.add('hidden');
+            formQr.classList.add('hidden');
+        } else if (tab === 'qr') {
+            // Для QR оставляем красивую циановую тень
+            authBox.classList.remove('auth-shadow-register');
+            authBox.classList.add('auth-shadow-login');
+
+            formLogin.classList.add('hidden');
+            formRegister.classList.add('hidden');
+            formQr.classList.remove('hidden');
+        }
+    }
+
+    // Слушатели событий
+    loginBtn.addEventListener('click', () => openAuth('login'));
+    registerBtn.addEventListener('click', () => openAuth('register'));
+    authClose.addEventListener('click', closeAuth);
+    authBackdrop.addEventListener('click', closeAuth);
+    
+    tabLoginBtn.addEventListener('click', () => switchTab('login'));
+    tabRegisterBtn.addEventListener('click', () => switchTab('register'));
+    
+    toggleQrBtn.addEventListener('click', () => switchTab('qr'));
+    backToLoginBtn.addEventListener('click', () => switchTab('login'));
+</script>
+</body>
+</html>
