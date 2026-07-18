@@ -8,7 +8,7 @@
 	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 	
-    <title>База Знаний | Youindie.ru</title>
+    <title>Проекты Проектов | Youindie.ru</title>
     
     <!-- Подключаем Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -46,32 +46,38 @@
 		.no-scrollbar::-webkit-scrollbar { display: none; }
 		.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 		
-        /* Индивидуальные тени-засветы с адаптивной рамкой */
-        .auth-shadow-login {
+        .auth-shadow-login 
+		{
             box-shadow: 0 0 50px -5px rgba(0, 240, 240, 0.15), 0 25px 50px -12px rgba(0, 0, 0, 0.7);
             border-color: rgba(0, 240, 240, 0.25) !important;
         }
-        .auth-shadow-register {
+		
+        .auth-shadow-register 
+		{
             box-shadow: 0 0 50px -5px rgba(240, 0, 115, 0.15), 0 25px 50px -12px rgba(0, 0, 0, 0.7);
             border-color: rgba(240, 0, 115, 0.25) !important;
         }
 		
 		.avatar01 {background: url("Avatar_01.jpg"); background-size: cover; background-position: center;}
-        .article-1-bg  {background: url("Matrix.jpg"); background-size: cover; background-position: center;}
-        .article-2-bg  {background: url("Economic.jpg"); background-size: cover; background-position: center;}
+		.addproject_bg {background: url("addproject_bg.jpg"); background-size: cover; background-position: center;}
+		.project_WastelandInterceptor {background: url("project_WastelandInterceptor.jpg"); background-size: cover; background-position: center;}
+		.project_AetherProtocol {background: url("project_AetherProtocol.jpg"); background-size: cover; background-position: center;}
+		.project_VolumetricCloudsPro {background: url("project_VolumetricCloudsPro.jpg"); background-size: cover; background-position: center;}
+		.project_PaperKnights {background: url("project_PaperKnights.jpg"); background-size: cover; background-position: center;}
+		.AbyssalEchoesOST {background: url("project_AbyssalEchoesOST.jpg"); background-size: cover; background-position: center;}
+		
     </style>
 </head>
 <body class="bg-slate-50 dark:bg-darkBase text-slate-800 dark:text-slate-200 min-h-screen pb-16 overflow-x-hidden relative font-sans">
 
-    <!-- Атмосферные фоновые засветы -->
+   <!-- Атмосферные фоновые засветы -->
     <div class="hidden dark:block absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-pinkAccent/5 blur-[120px] pointer-events-none"></div>
     <div class="hidden dark:block absolute top-[20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-cyanAccent/5 blur-[150px] pointer-events-none"></div>
 
-	<!-- ШАПКА САЙТА (Активная ссылка на Статьи) -->
+	<!-- ШАПКА САЙТА -->
 	<header class="sticky top-0 z-50 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-darkBase/80 backdrop-blur-md">
     <div class="max-w-[1400px] mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
         
-        <!-- Логотип -->
         <a href="index.html" class="flex items-center gap-2 md:gap-4 group shrink-0">
             <img src="Logo.png" alt="YouIndie Logo" class="w-10 h-10 md:w-12 md:h-12 object-contain group-hover:scale-105 transition-transform duration-300">
             <div class="flex flex-col justify-center mt-1">
@@ -87,19 +93,17 @@
             </div>
         </a>
 
-        <!-- Навигация -->
+        <!-- Навигация: Активна Проекты -->
         <nav class="hidden lg:flex space-x-4 xl:space-x-6 text-sm font-semibold text-slate-600 dark:text-slate-400">
             <a href="news.html" class="hover:text-slate-900 dark:hover:text-white transition-colors">Новости</a>
-            <!-- Подсветили СТАТЬИ циановым -->
-            <a href="articles.html" class="text-slate-900 dark:text-white hover:text-slate-900 dark:hover:text-white transition-colors">Статьи</a>
+            <a href="articles.html" class="hover:text-slate-900 dark:hover:text-white transition-colors">Статьи</a>
             <a href="devlogs.html" class="hover:text-slate-900 dark:hover:text-white transition-colors">Дневники</a>
-            <a href="projects.html" class="hover:text-slate-900 dark:hover:text-white transition-colors">Проекты</a>
-            <a href="#" class="hover:text-slate-900 dark:hover:text-white transition-colors">Ресурсы</a>
-            <a href="#" class="hover:text-slate-900 dark:hover:text-white transition-colors">Форум</a>
-            <a href="#" class="hover:text-slate-900 dark:hover:text-white transition-colors">Работа</a>
+            <a href="projects.html" class="text-slate-900 dark:text-white hover:text-slate-900 dark:hover:text-white transition-colors">Проекты</a>
+            <a href="resources.html" class="hover:text-slate-900 dark:hover:text-white transition-colors">Ресурсы</a>
+            <a href="forum.html" class="hover:text-slate-900 dark:hover:text-white transition-colors">Форум</a>
+            <a href="jobs.html" class="hover:text-slate-900 dark:hover:text-white transition-colors">Работа</a>
         </nav>
 
-        <!-- Правая панель -->
         <div class="flex items-center space-x-3 md:space-x-5 shrink-0">
             
             <div class="guest-ui hidden items-center space-x-3">
@@ -117,7 +121,6 @@
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
                     <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-pinkAccent rounded-full border-2 border-white dark:border-darkBase"></span>
                 </button>
-
                 <a href="profile.html" class="flex items-center space-x-3 sm:pl-2 sm:border-l border-slate-200 dark:border-slate-800 group transition-all">
 					<div class="text-right hidden lg:block">
 						<div class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-cyanAccent transition-colors leading-none">NeoDev</div>
@@ -136,93 +139,208 @@
                 <svg id="icon-moon" class="w-5 h-5 text-cyanAccent hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
                 <svg id="icon-sun" class="w-5 h-5 text-orange-500 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
             </button>
-
 			<button id="burger-btn" class="block lg:hidden p-2 text-slate-600 dark:text-slate-300 hover:text-cyan-500 dark:hover:text-cyanAccent hover:drop-shadow-[0_0_8px_rgba(0,240,255,0.5)] transition-all">
-				<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-				</svg>
+				<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
 			</button>
-            
         </div>
     </div>
 </header>
 
-    <!-- ОСНОВНАЯ СЕТКА СТРАНИЦЫ СТАТЕЙ -->
+    <!-- ОСНОВНАЯ СЕТКА: Проекты ПРОЕКТОВ -->
     <main class="max-w-[1400px] mx-auto px-4 md:px-6 mt-8 space-y-6">
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-            <!-- ЛЕВАЯ КОЛОНКА (2/3 — База Знаний / Статьи) -->
+            <!-- ЛЕВАЯ КОЛОНКА (2/3 — Проекты) -->
             <div class="lg:col-span-2 space-y-6 flex flex-col h-full">
                 
-                <!-- 1. ЗАКРЕПЛЕННЫЙ ТУТОРИАЛ НЕДЕЛИ (Большой баннер) -->
-                <section class="relative h-[280px] md:h-[360px] rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm group cursor-pointer shrink-0">
-                    <div class="absolute inset-0 article-1-bg bg-cover bg-center group-hover:scale-102 transition-transform duration-700"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent z-10"></div>
+                <!-- 1. ГЛАВНЫЙ ПРОЕКТ НЕДЕЛИ (Масштабное обновление) -->
+                <!-- AI PROMPT: cinematic sci-fi metroidvania game cover, glowing cybernetic armor, ancient alien ruins, vibrant neon pink and deep blue lighting, high quality pixel art or 2.5d render, wide shot --ar 16:9 -->
+                <section class="relative h-[320px] md:h-[400px] rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm group shrink-0 hover:border-purple-500/50 dark:hover:border-purple-500/50 hover:shadow-[0_0_15px_rgba(168,85,247,0.15)] transition-all duration-300 cursor-pointer flex flex-col h-full overflow-hidden rounded-2xl">
+				
+                    <div class="absolute inset-0 project_AetherProtocol bg-cover bg-center group-hover:scale-102 transition-transform duration-700"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-10"></div>
                     
                     <div class="absolute inset-x-0 bottom-0 p-6 z-20 flex flex-col justify-end h-full">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="px-2.5 py-0.5 rounded-lg bg-pinkAccent/20 text-pinkAccent border border-pinkAccent/30 text-[10px] font-bold uppercase tracking-wider">Туториал недели</span>
-                            <span class="text-xs text-slate-300">ShaderGuru • Читать 8 мин</span>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-2.5 py-0.5 rounded-lg bg-pinkAccent/20 text-pinkAccent border border-pinkAccent/30 text-[10px] font-bold uppercase tracking-wider">🔥 Крупное обновление</span>
+                            <span class="px-2.5 py-0.5 rounded-lg bg-black/50 backdrop-blur-md text-white border border-white/10 text-[10px] font-bold uppercase tracking-wider">ИГРА</span>
                         </div>
-                        <h2 class="text-xl md:text-3xl font-techno font-bold text-white tracking-wide leading-tight max-w-3xl">
-                            Математика для шейдеров: как перестать бояться матриц и начать творить кастомный свет
+                        <h2 class="text-2xl md:text-4xl font-techno font-bold text-white tracking-wide leading-tight mb-2">
+                            Aether Protocol
                         </h2>
+                        <p class="text-sm text-slate-300 max-w-2xl line-clamp-2 mb-4">Sci-Fi метроидвания переходит в стадию открытой беты. Добавлена новая локация "Руины Древних" и переработана система имплантов.</p>
+                        
+                        <div class="flex items-center justify-between border-t border-white/20 pt-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-purple-500 flex items-center justify-center font-bold text-white text-xs">LF</div>
+                                <div class="text-xs text-slate-300">Студия: <span class="text-white font-bold">Lunar Forge</span></div>
+                            </div>
+                            <div class="flex gap-2">
+                                <span class="px-2 py-1 rounded bg-white/10 backdrop-blur text-white text-[10px] font-semibold">Godot 4</span>
+                                <span class="px-2 py-1 rounded bg-white/10 backdrop-blur text-white text-[10px] font-semibold">PC</span>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
-                <!-- 2. СЕТКА СВЕЖИХ СТАТЕЙ -->
+                <div class="flex justify-between items-end px-1 shrink-0">
+                    <h2 class="font-techno font-bold text-2xl text-slate-900 dark:text-white">Лента проектов</h2>
+                    <span class="text-xs text-slate-500">Сортировка: <span class="font-bold text-cyanAccent cursor-pointer">По активности</span></span>
+                </div>
+
+                <!-- 2. СЕТКА ПРОЕКТОВ (Игры, Модели, Музыка, Плагины) -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 flex-1">
                     
-                    <!-- Статья 1 -->
-                    <article class="group bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden cursor-pointer hover:border-cyanAccent/30 transition-all flex flex-col h-full">
-                        <div class="h-40 article-2-bg shrink-0"></div>
+                    <!-- ПРОЕКТ 1: 3D Модель (Одиночка) -->
+                    <!-- AI PROMPT: highly detailed 3d render of a rusty post-apocalyptic muscle car, mad max style, mounted machine guns, dirt and weathering, desert background, substance painter showcase, wireframe overlay transition --ar 16:9 -->				
+					<article class="group bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 hover:border-amber-500/50 dark:hover:border-amber-500/50 hover:shadow-[0_0_15px_rgba(245,158,11,0.15)] transition-all duration-300 cursor-pointer flex flex-col h-full overflow-hidden rounded-2xl">
+					
+                        <div class="h-44 relative shrink-0 overflow-hidden">
+							<!-- Слой с фоном, который увеличивается (scale-110) -->
+							<div class="absolute inset-0 project_WastelandInterceptor group-hover:scale-110 transition-transform duration-500"></div>
+							<div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
+							<div class="absolute top-3 left-3 flex gap-2 z-10">
+								<span class="px-2 py-1 rounded bg-black/60 backdrop-blur text-amber-400 text-[9px] font-bold uppercase border border-white/10">3D Модель</span>
+							</div>
+							<div class="absolute bottom-3 right-3 px-2 py-1 rounded bg-black/60 backdrop-blur text-white text-[9px] font-bold uppercase border border-white/10 z-10">Blender • Substance</div>
+						</div>
+                        
                         <div class="p-4 flex-grow flex flex-col justify-between">
                             <div>
-                                <div class="flex items-center gap-2 mb-2 text-[10px] font-bold text-cyanAccent uppercase tracking-widest">
-                                    <span>Геймдизайн</span>
-                                    <span>•</span>
-                                    <span class="text-slate-400">Читать 12 мин</span>
+                                <h3 class="font-bold text-lg text-slate-900 dark:text-white group-hover:text-amber-500 transition-colors leading-tight mb-1">Wasteland Interceptor</h3>
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="w-5 h-5 rounded-full bg-amber-500/20 text-amber-500 flex items-center justify-center text-[8px] font-bold">RM</div>
+                                    <span class="text-[10px] text-slate-500 dark:text-slate-400">Автор: <span class="font-bold text-slate-700 dark:text-slate-300">RustModeller</span></span>
                                 </div>
-                                <h4 class="font-bold text-sm md:text-base text-slate-900 dark:text-white group-hover:text-cyanAccent transition-colors">Экономика выживания: идеальный баланс ресурсов в играх</h4>
-                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 line-clamp-2">Строим детальную математическую модель распределения лута, которая удерживает игрока в напряжении до самого финала.</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">Высокополигональная модель постапокалиптического масл-кара. Добавил текстуры ржавчины и пыли. Готовлю лоды.</p>
                             </div>
-                            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/40 text-[10px] text-slate-400 flex justify-between items-center">
-                                <span>Автор: IndieMind</span>
-                                <span>❤️ 84 лайка</span>
+                            
+                            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/60 flex items-center justify-between">
+                                <div class="flex items-center gap-1.5">
+                                    <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyanAccent opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-cyanAccent"></span></span>
+                                    <span class="text-[10px] font-semibold text-slate-600 dark:text-slate-300">Блог: 2 ч. назад</span>
+                                </div>
+                                <span class="text-[10px] text-slate-400">Старт: Май 2026</span>
                             </div>
                         </div>
                     </article>
 
-                    <!-- Статья 2 -->
-                    <!-- AI PROMPT: detailed close-up of unreal engine 5 scene rendering lighting with ray tracing, beautiful soft global illumination shadows on concrete blocks, 3d engine viewport --ar 16:9 -->
-                    <article class="group bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden cursor-pointer hover:border-cyanAccent/30 transition-all flex flex-col h-full">
-                        <div class="h-40 bg-[url('ue_lumen_article.jpg')] bg-cover bg-center shrink-0"></div>
+                    <!-- ПРОЕКТ 2: Код / Плагин (Команда) -->
+                    <!-- AI PROMPT: user interface of unreal engine 5, showing a hyper-realistic sky with volumetric clouds over mountains at sunset, technical node graph overlaid, programmer tool showcase --ar 16:9 -->
+                    <article class="group bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 hover:shadow-[0_0_15px_rgba(16,185,129,0.15)] transition-all duration-300 cursor-pointer flex flex-col h-full overflow-hidden rounded-2xl">
+                        <div class="h-44 project_VolumetricCloudsPro relative shrink-0">
+							<div class="absolute inset-0 project_VolumetricCloudsPro group-hover:scale-110 transition-transform duration-500"></div>
+							<div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
+							<div class="absolute top-3 left-3 flex gap-2 z-10">
+								<span class="px-2 py-1 rounded bg-black/60 backdrop-blur text-emerald-400 text-[9px] font-bold uppercase border border-white/10">UE Plugin (Код)</span>
+							</div>
+							<div class="absolute bottom-3 right-3 px-2 py-1 rounded bg-black/60 backdrop-blur text-white text-[9px] font-bold uppercase border border-white/10 z-10">UE 5 • C++ • HLSL</div>
+                        </div>
+                        
                         <div class="p-4 flex-grow flex flex-col justify-between">
                             <div>
-                                <div class="flex items-center gap-2 mb-2 text-[10px] font-bold text-pinkAccent uppercase tracking-widest">
-                                    <span>Оптимизация</span>
-                                    <span>•</span>
-                                    <span class="text-slate-400">Читать 10 мин</span>
+                                <h3 class="font-bold text-lg text-slate-900 dark:text-white group-hover:text-emerald-500 transition-colors leading-tight mb-1">Volumetric Clouds Pro</h3>
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="w-5 h-5 rounded-md bg-emerald-500/20 text-emerald-500 flex items-center justify-center text-[8px] font-bold">ST</div>
+                                    <span class="text-[10px] text-slate-500 dark:text-slate-400">Команда: <span class="font-bold text-slate-700 dark:text-slate-300">SkyTech FX</span></span>
                                 </div>
-                                <h4 class="font-bold text-sm md:text-base text-slate-900 dark:text-white group-hover:text-cyanAccent transition-colors">Работа со светом: Сравнение Lumen и RayTracing в UE 5.4</h4>
-                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 line-clamp-2">Разбираем производительность глобального освещения на разном типе железа. Как выжать 60 FPS с Lumen.</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">Система рендеринга кинематографичных облаков. Оптимизировали raymarching, теперь работает в 2 раза быстрее.</p>
                             </div>
-                            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/40 text-[10px] text-slate-400 flex justify-between items-center">
-                                <span>Автор: NeoDev</span>
-                                <span>❤️ 112 лайков</span>
+                            
+                            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/60 flex items-center justify-between">
+                                <span class="text-[10px] font-bold text-emerald-500 uppercase">Готов к релизу</span>
+                                <span class="text-[10px] text-slate-400 font-semibold flex items-center gap-1">❤️ 215 лайков</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ПРОЕКТ 3: Игра (Команда) -->
+                    <!-- AI PROMPT: cute stylized low poly papercraft knights fighting a small red dragon on a wooden tabletop, tabletop rpg aesthetic, warm cozy lighting, unity engine render --ar 16:9 -->
+                    <article class="group bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 hover:border-pinkAccent/50 dark:hover:border-pinkAccent/50 hover:shadow-[0_0_15px_rgba(240,0,115,0.15)] transition-all duration-300 cursor-pointer flex flex-col h-full overflow-hidden rounded-2xl">
+                        <div class="h-44 project_PaperKnights relative shrink-0">
+                            						
+							<div class="absolute inset-0 project_PaperKnights group-hover:scale-110 transition-transform duration-500"></div>
+							<div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
+							<div class="absolute top-3 left-3 flex gap-2 z-10">
+								<span class="px-2 py-1 rounded bg-black/60 backdrop-blur text-pinkAccent text-[9px] font-bold uppercase border border-white/10">ИГРА (Прототип)</span>
+							</div>
+							<div class="absolute bottom-3 right-3 px-2 py-1 rounded bg-black/60 backdrop-blur text-white text-[9px] font-bold uppercase border border-white/10 z-10">Unity • C#</div>
+                        </div>
+                        
+                        <div class="p-4 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-bold text-lg text-slate-900 dark:text-white group-hover:text-pinkAccent transition-colors leading-tight mb-1">Paper Knights</h3>
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="w-5 h-5 rounded-md bg-pinkAccent/20 text-pinkAccent flex items-center justify-center text-[8px] font-bold">CB</div>
+                                    <span class="text-[10px] text-slate-500 dark:text-slate-400">Студия: <span class="font-bold text-slate-700 dark:text-slate-300">Cardboard Box</span></span>
+                                </div>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">Пошаговая RPG в стиле бумажных фигурок на столе. Написали базовый ИИ противников и систему ходов.</p>
+                            </div>
+                            
+                            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/60">
+                                <div class="flex justify-between items-baseline mb-1">
+                                    <span class="text-[10px] font-bold text-pinkAccent uppercase">Альфа • 25%</span>
+                                    <span class="text-[10px] font-semibold text-slate-400">Блог: Вчера</span>
+                                </div>
+                                <div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                                    <div class="bg-pinkAccent h-full rounded-full shadow-[0_0_8px_rgba(240,0,115,0.5)]" style="width: 25%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ПРОЕКТ 4: Аудио (Одиночка) -->
+                    <!-- AI PROMPT: abstract visual representation of sound waves, dark deep ocean vibes, glowing cyan and deep blue bioluminescent audio frequency lines, ambient music cover art, 3d render --ar 16:9 -->
+                    <article class="group bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 hover:border-purple-500/50 dark:hover:border-purple-500/50 hover:shadow-[0_0_15px_rgba(168,85,247,0.15)] transition-all duration-300 cursor-pointer flex flex-col h-full overflow-hidden rounded-2xl">
+                        
+						
+						
+						
+						<div class="h-44 relative shrink-0">
+							<div class="absolute inset-0 AbyssalEchoesOST group-hover:scale-110 transition-transform duration-500"></div>
+							<div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
+							<div class="absolute top-3 left-3 flex gap-2">
+                                <span class="px-2 py-1 rounded bg-black/60 backdrop-blur text-purple-400 text-[9px] font-bold uppercase border border-white/10">АУДИО</span>
+                            </div>
+
+							<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+								<!-- Glassmorphism Кнопка Play (полупрозрачный градиент + блюр) -->
+								<button class="w-14 h-14 rounded-full bg-gradient-to-tr from-purple-600/70 to-indigo-500/70 backdrop-blur-sm flex items-center justify-center text-white border border-purple-400/50 shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:scale-110 hover:shadow-[0_0_30px_rgba(168,85,247,0.6)] hover:bg-gradient-to-tr hover:from-purple-500/80 hover:to-indigo-400/80 active:scale-95 transition-all">
+									<svg class="w-6 h-6 ml-1 drop-shadow-md" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+								</button>
+							</div>							<div class="absolute bottom-3 right-3 px-2 py-1 rounded bg-black/60 backdrop-blur text-white text-[9px] font-bold uppercase border border-white/10 z-10">MOD • Ableton</div>
+                        </div>
+						
+						
+						
+						
+						
+                        
+                        <div class="p-4 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-bold text-lg text-slate-900 dark:text-white group-hover:text-purple-500 transition-colors leading-tight mb-1">Abyssal Echoes OST</h3>
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="w-5 h-5 rounded-full bg-purple-500/20 text-purple-500 flex items-center justify-center text-[8px] font-bold">SA</div>
+                                    <span class="text-[10px] text-slate-500 dark:text-slate-400">Автор: <span class="font-bold text-slate-700 dark:text-slate-300">SonicArchitect</span></span>
+                                </div>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">Пишу динамический dark-ambient саундтрек для глубоководных хорроров. Система слоев меняется от глубины.</p>
+                            </div>
+                            
+                            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/60 flex items-center justify-between">
+                                <span class="text-[10px] font-bold text-slate-500 uppercase">В процессе</span>
+                                <span class="text-[10px] text-slate-400 font-semibold flex items-center gap-1">▶️ 1.4k прослушиваний</span>
                             </div>
                         </div>
                     </article>
 
                 </div>
 				
-				<!-- КНОПКА "ПОКАЗАТЬ ЕЩЕ" И ПАГИНАЦИЯ -->
+				<!-- ПАГИНАЦИЯ -->
                 <div class="pt-6 border-t border-slate-200 dark:border-slate-800/60 flex flex-col sm:flex-row items-center justify-between gap-4 shrink-0">
                     <button class="w-full sm:w-auto bg-slate-900 dark:bg-cyanAccent/10 text-white dark:text-cyanAccent border border-transparent dark:border-cyanAccent/30 font-semibold text-xs px-6 py-3 rounded-xl hover:bg-slate-800 dark:hover:bg-cyanAccent/20 transition-all">
-                        Показать еще статьи
+                        Загрузить еще
                     </button>
-
                     <div class="flex items-center gap-1.5 text-xs font-semibold">
                         <button class="w-8 h-8 rounded-lg border border-slate-200 dark:border-slate-800 hover:border-cyanAccent flex items-center justify-center transition-colors">&larr;</button>
                         <button class="w-8 h-8 rounded-lg bg-cyanAccent text-darkBase flex items-center justify-center font-bold">1</button>
@@ -234,76 +352,85 @@
 				
             </div>
 
-            <!-- ПРАВАЯ КОЛОНКА (1/3 — Сайдбар с фильтрами и топ-авторами) -->
+            <!-- ПРАВАЯ КОЛОНКА (1/3 — Сайдбар с фильтрами) -->
             <div class="space-y-6 lg:sticky lg:top-24 lg:self-start">
+               <!-- CTA: Добавить свой проект (Cyber-Tech Style с динамическим свечением) -->
+                <section id="project-cta-card" class="p-[1px] rounded-3xl shadow-sm hover:shadow-[0_0_20px_rgba(0,240,240,0.15)] relative overflow-hidden group cursor-pointer transition-all duration-300">
+                    
+                    <!-- Основной внутренний контейнер -->
+                    <div class="h-full w-full rounded-[23px] bg-darkCard relative overflow-hidden flex flex-col items-center text-center px-5 py-6">
+                        
+                        <!-- Фоновый технологичный паттерн -->
+                        <div class="addproject_bg absolute inset-0 opacity-40 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        
+                        <!-- Динамический блик (фонарик, следующий за мышью) -->
+                        <div id="project-glow" class="absolute w-40 h-40 bg-cyanAccent/30 blur-[50px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
 
-                <!-- Виджет 1: Разделы Базы Знаний -->
+                        <!-- Подложка для текста (появляется при наведении, чтобы текст читался на ярком фоне) -->
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-colors duration-500 z-0"></div>
+
+                        <!-- Контент -->
+                        <div class="relative z-10 flex flex-col items-center">
+                            
+                            <!-- Строгая техническая кнопка-плюс -->
+                            <div class="w-10 h-10 rounded-lg border border-slate-700 bg-slate-800/80 flex items-center justify-center text-slate-400 group-hover:border-cyanAccent/60 group-hover:text-cyanAccent group-hover:bg-cyanAccent/10 transition-all duration-300 mb-4 shadow-inner relative overflow-hidden">
+                                <!-- Маленький блик внутри самой кнопки -->
+                                <div class="absolute inset-0 bg-cyanAccent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md"></div>
+                                <svg class="w-5 h-5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </div>
+                            
+                            <h4 class="font-techno font-bold text-xl text-slate-200 group-hover:text-white transition-colors leading-tight drop-shadow-md">Создать проект</h4>
+                            
+                            <!-- Текст становится ярче (text-slate-300) при наведении -->
+                            <p class="text-[11px] text-slate-500 group-hover:text-slate-300 mt-2 leading-relaxed max-w-[220px] transition-colors duration-300 drop-shadow-md">
+                                Заведи карточку для своей игры, 3D-модели или скрипта и начни вести дневник разработки.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Неоновая рамка -->
+                    <div class="absolute inset-0 rounded-3xl border border-slate-200 dark:border-slate-800 group-hover:border-cyanAccent/40 pointer-events-none transition-colors duration-300"></div>
+                </section>
+
+                <!-- Фильтр: Тип проекта -->
                 <section class="bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 rounded-3xl p-5 shadow-sm">
-                    <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest block leading-none mb-4">Направления</span>
+                    <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest block leading-none mb-4">Тип проекта</span>
                     
                     <div class="flex flex-col gap-1.5 font-semibold text-xs text-slate-700 dark:text-slate-300">
                         <a href="#" class="flex justify-between items-center p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/40 hover:text-cyanAccent hover:border-cyanAccent/30 border border-transparent transition-all">
-                            <span>Все материалы</span>
-                            <span class="px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-900 text-[10px]">240</span>
+                            <span>Все проекты</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-900 text-[10px]">1,204</span>
                         </a>
                         <a href="#" class="flex justify-between items-center p-2.5 rounded-xl hover:text-pinkAccent hover:border-pinkAccent/30 border border-transparent transition-all">
-                            <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-pinkAccent"></span> Туториалы</span>
-                            <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-900/60 text-[10px]">86</span>
-                        </a>
-                        <a href="#" class="flex justify-between items-center p-2.5 rounded-xl hover:text-cyanAccent hover:border-cyanAccent/30 border border-transparent transition-all">
-                            <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyanAccent"></span> Геймдизайн</span>
-                            <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-900/60 text-[10px]">54</span>
+                            <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-pinkAccent"></span> Разработка Игр</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-900/60 text-[10px]">850</span>
                         </a>
                         <a href="#" class="flex justify-between items-center p-2.5 rounded-xl hover:text-amber-500 hover:border-amber-500/30 border border-transparent transition-all">
-                            <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Оптимизация</span>
-                            <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-900/60 text-[10px]">32</span>
+                            <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> 3D Модели и Арт</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-900/60 text-[10px]">210</span>
+                        </a>
+                        <a href="#" class="flex justify-between items-center p-2.5 rounded-xl hover:text-purple-500 hover:border-purple-500/30 border border-transparent transition-all">
+                            <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span> Музыка и Аудио</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-900/60 text-[10px]">84</span>
+                        </a>
+                        <a href="#" class="flex justify-between items-center p-2.5 rounded-xl hover:text-emerald-500 hover:border-emerald-500/30 border border-transparent transition-all">
+                            <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Код, Плагины, VFX</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-900/60 text-[10px]">60</span>
                         </a>
                     </div>
                 </section>
 
-                <!-- Виджет 2: Топ Авторов Базы Знаний -->
+                <!-- Фильтр: Движки и Софт -->
                 <section class="bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 rounded-3xl p-5 shadow-sm">
-                    <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest block leading-none mb-4">Писатели недели</span>
+                    <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest block leading-none mb-4">Популярный софт</span>
                     
-                    <div class="space-y-4">
-                        <!-- Автор 1 -->
-                        <div class="flex items-center gap-3 group cursor-pointer">
-                            <div class="w-8 h-8 rounded-full bg-cyanAccent/20 flex items-center justify-center font-bold text-[10px] text-cyanAccent border border-cyanAccent/10 shrink-0">SG</div>
-                            <div class="overflow-hidden flex-grow">
-                                <h5 class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-cyanAccent transition-colors truncate leading-tight">ShaderGuru</h5>
-                                <span class="text-[9px] text-slate-400 mt-0.5 block">12 статей • +1.4k XP</span>
-                            </div>
-                        </div>
-                        <!-- Автор 2 -->
-                        <div class="flex items-center gap-3 group cursor-pointer border-t border-slate-100 dark:border-slate-800/40 pt-3.5">
-                            <div class="w-8 h-8 rounded-full bg-pinkAccent/20 flex items-center justify-center font-bold text-[10px] text-pinkAccent border border-pinkAccent/10 shrink-0">IM</div>
-                            <div class="overflow-hidden flex-grow">
-                                <h5 class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-pinkAccent transition-colors truncate leading-tight">IndieMind</h5>
-                                <span class="text-[9px] text-slate-400 mt-0.5 block">8 статей • +950 XP</span>
-                            </div>
-                        </div>
-                        <!-- Автор 3 -->
-                        <div class="flex items-center gap-3 group cursor-pointer border-t border-slate-100 dark:border-slate-800/40 pt-3.5">
-                            <div class="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center font-bold text-[10px] text-amber-500 border border-amber-500/10 shrink-0">ND</div>
-                            <div class="overflow-hidden flex-grow">
-                                <h5 class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-amber-500 transition-colors truncate leading-tight">NeoDev</h5>
-                                <span class="text-[9px] text-slate-400 mt-0.5 block">5 статей • +812 XP</span>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Виджет 3: Призыв опубликовать статью (CTA) -->
-                <section class="p-5 rounded-3xl bg-gradient-to-tr from-cyanAccent/5 to-pinkAccent/5 border border-slate-200 dark:border-slate-800/60 shadow-sm relative overflow-hidden group">
-                    <div class="absolute -top-10 -right-10 w-24 h-24 bg-pinkAccent/10 blur-2xl pointer-events-none"></div>
-                    <div class="relative z-10">
-                        <span class="text-[9px] font-bold text-pinkAccent uppercase tracking-widest block leading-none mb-1">Поделись знаниями</span>
-                        <h4 class="font-bold text-sm text-slate-900 dark:text-white leading-tight mt-1.5">Напиши свой туториал</h4>
-                        <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">Написал крутой шейдер или оптимизировал код? Поделись с инди-комьюнити и получи +100 XP к репутации.</p>
-                        
-                        <button class="w-full bg-pink-600 dark:bg-pinkAccent text-white dark:text-darkBase font-bold text-xs py-2.5 rounded-xl hover:scale-102 transition-transform shadow-md mt-4">
-                            Написать статью
-                        </button>
+                    <div class="flex flex-wrap gap-2">
+                        <button class="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 text-xs font-semibold hover:border-cyanAccent hover:text-cyanAccent transition-colors">Unreal Engine 5</button>
+                        <button class="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 text-xs font-semibold hover:border-cyanAccent hover:text-cyanAccent transition-colors">Unity</button>
+                        <button class="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 text-xs font-semibold hover:border-cyanAccent hover:text-cyanAccent transition-colors">Godot 4</button>
+                        <button class="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 text-xs font-semibold hover:border-cyanAccent hover:text-cyanAccent transition-colors">Blender</button>
+                        <button class="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 text-xs font-semibold hover:border-cyanAccent hover:text-cyanAccent transition-colors">FMOD</button>
+                        <button class="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 text-xs font-semibold hover:border-cyanAccent hover:text-cyanAccent transition-colors">Aseprite</button>
                     </div>
                 </section>
 
@@ -312,6 +439,7 @@
         </div>
 
     </main>
+
 
 	<!-- ФУТЕР (ПОДВАЛ САЙТА) -->
     <footer class="mt-16 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-darkBase pt-12 pb-8">
@@ -646,6 +774,25 @@
     
     toggleQrBtn.addEventListener('click', () => switchTab('qr'));
     backToLoginBtn.addEventListener('click', () => switchTab('login'));
+</script>
+
+<!-- СКРИПТ ДИНАМИЧЕСКОГО БЛИКА ДЛЯ CTA-КАРТОЧКИ -->
+<script>
+    const ctaCard = document.getElementById('project-cta-card');
+    const ctaGlow = document.getElementById('project-glow');
+
+    if (ctaCard && ctaGlow) {
+        ctaCard.addEventListener('mousemove', (e) => {
+            // Вычисляем позицию мыши относительно самой карточки
+            const rect = ctaCard.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // Плавно передвигаем блик за курсором
+            ctaGlow.style.left = `${x}px`;
+            ctaGlow.style.top = `${y}px`;
+        });
+    }
 </script>
 </body>
 </html>
